@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="还是写点装B话吧：look to the master, follow the master, walk with the master, see through the master, become the master.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="全蛋的博客">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="全蛋的博客">
+<meta property="og:description" content="还是写点装B话吧：look to the master, follow the master, walk with the master, see through the master, become the master.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="全蛋的博客">
+<meta name="twitter:description" content="还是写点装B话吧：look to the master, follow the master, walk with the master, see through the master, become the master.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
+
+  <title>全蛋的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">全蛋的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/05/常见排序算法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fullegg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="全蛋的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/05/常见排序算法总结/" itemprop="url">使用Hexo+Github免费搭建博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-05T12:01:25+08:00">
+                2017-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="冒泡排序实现："><a href="#冒泡排序实现：" class="headerlink" title="冒泡排序实现："></a>冒泡排序实现：</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span><span class="params">($arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!is_array($arr)) &#123;<span class="keyword">return</span> <span class="keyword">false</span>;&#125;</span><br><span class="line"></span><br><span class="line">	$cnt = count($arr);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>( $i = <span class="number">0</span>; $i &lt; $cnt; $i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>( $j = <span class="number">0</span>; $j &lt; $cnt-$i<span class="number">-1</span>; $j++)&#123;</span><br><span class="line">			<span class="comment">// 比较前后两个数，把大的放后面，小的放前面。一轮循环结束，最大的数在最后。然后开始第二轮循环</span></span><br><span class="line">			<span class="keyword">if</span>($arr[$j] &gt; $arr[$j+<span class="number">1</span>])&#123;</span><br><span class="line">				$temp = $arr[$j];</span><br><span class="line">				$arr[$j] = $arr[$j+<span class="number">1</span>];</span><br><span class="line">				$arr[$j+<span class="number">1</span>] = $temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> $arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入排序实现："><a href="#插入排序实现：" class="headerlink" title="插入排序实现："></a>插入排序实现：</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span><span class="params">($arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!is_array($arr)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	$cnt = count($arr);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>( $i = <span class="number">1</span>; $i &lt; $cnt; $i++)&#123;</span><br><span class="line">		<span class="comment">// 第0个到第i个为有序数列，先判断第i+1个是否比第i个数大</span></span><br><span class="line">		<span class="keyword">if</span>($arr[$i<span class="number">-1</span>] &gt; $arr[$i])&#123;</span><br><span class="line">			<span class="comment">// 第i个数作为需要插入的数，当作临时变量</span></span><br><span class="line">			$temp = $arr[$i];</span><br><span class="line">			<span class="comment">// 循环：临时变量大于第j个数就停止，否则就把第j个数往后移一位</span></span><br><span class="line">			<span class="keyword">for</span>( $j = $i<span class="number">-1</span>; $j &gt;= <span class="number">0</span> &amp;&amp; $temp &lt; $arr[$j]; $j--)&#123;</span><br><span class="line">					$arr[$j+<span class="number">1</span>] = $arr[$j];</span><br><span class="line">			&#125;</span><br><span class="line">			$arr[$j+<span class="number">1</span>] = $temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> $arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序实现："><a href="#快速排序实现：" class="headerlink" title="快速排序实现："></a>快速排序实现：</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span><span class="params">($arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!is_array($arr)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	$cnt = count($arr);</span><br><span class="line">	<span class="comment">// 如果数组个数不大于1，就不需要再排列了</span></span><br><span class="line">	<span class="keyword">if</span>($cnt &lt;=<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> $arr;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 确定要比较的基本标尺，初始化左边和右边的数组</span></span><br><span class="line">	$base_num = $arr[<span class="number">0</span>];</span><br><span class="line">	$right_arr = <span class="keyword">array</span>();</span><br><span class="line">	$left_arr = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将小于基本标尺的数放左边，大于的放右边</span></span><br><span class="line">	<span class="keyword">for</span>($i = <span class="number">1</span>; $i &lt; $cnt; $i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>($arr[$i] &lt; $base_num)&#123;</span><br><span class="line">			$left_arr[] = $arr[$i];</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			$right_arr[] = $arr[$i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 通过递归再排列左边和右边的数组序列</span></span><br><span class="line">	$left_arr = quickSort($left_arr);</span><br><span class="line">	$right_arr = quickSort($right_arr);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> array_merge($left_arr, <span class="keyword">array</span>($base_num), $right_arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序实现："><a href="#选择排序实现：" class="headerlink" title="选择排序实现："></a>选择排序实现：</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span><span class="params">($arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!is_array($arr)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	$cnt = count($arr);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>($i = <span class="number">0</span>; $i &lt; $cnt<span class="number">-1</span>; $i++)&#123;</span><br><span class="line">		<span class="comment">// 定义初始时最小的位置</span></span><br><span class="line">		$minIndex = $i;</span><br><span class="line">		<span class="comment">// 循环找到最小的位置</span></span><br><span class="line">		<span class="keyword">for</span>($j = $i+<span class="number">1</span>; $j &lt; $cnt; $j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>($arr[$minIndex] &gt; $arr[$j])&#123;</span><br><span class="line">				$minIndex = $j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 若最小的位置与初始位置不同，则交换两个数</span></span><br><span class="line">		<span class="keyword">if</span>($i != $minIndex)&#123;</span><br><span class="line">			$temp = $arr[$i];</span><br><span class="line">			$arr[$i] = $arr[$minIndex];</span><br><span class="line">			$arr[$minIndex] = $temp; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> $arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="希尔排序实现："><a href="#希尔排序实现：" class="headerlink" title="希尔排序实现："></a>希尔排序实现：</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span><span class="params">($arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!is_array($arr)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	$cnt = count($arr);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>($gap = floor($cnt/<span class="number">2</span>); $gap &gt; <span class="number">0</span>; $gap = floor($gap/<span class="number">2</span>))&#123;</span><br><span class="line">		<span class="comment">// 按增量$gap进行分组，相隔$gap的为同一组</span></span><br><span class="line">		<span class="keyword">for</span>($i = <span class="number">1</span>; $i*$gap &lt; $cnt; $i++)&#123;</span><br><span class="line">			<span class="comment">// 拿出当前组需要进行插入排序的数</span></span><br><span class="line">			$temp = $arr[$i*$gap];</span><br><span class="line">			<span class="comment">// 对当前组进行插入排序</span></span><br><span class="line">			<span class="keyword">for</span>($j = $i - <span class="number">1</span>; $j &gt;= <span class="number">0</span>; $j--)&#123;</span><br><span class="line">				<span class="keyword">if</span>($arr[$j*$gap] &gt; $temp)&#123;</span><br><span class="line">					$arr[($j+<span class="number">1</span>)*$gap] = $arr[$j*$gap];</span><br><span class="line">					$arr[$j*$gap] = $temp;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			print_r($arr);<span class="keyword">echo</span> <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> $arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="堆排序实现："><a href="#堆排序实现：" class="headerlink" title="堆排序实现："></a>堆排序实现：</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortHeap</span><span class="params">(&amp;$arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//先建堆</span></span><br><span class="line">    buildHeap($arr);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//把第一个节点和最后一个节点交换,直到节点数为1</span></span><br><span class="line">    $count = count($arr);</span><br><span class="line">    <span class="keyword">while</span> ($count &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        swap($arr, $count - <span class="number">1</span>, <span class="number">0</span>); <span class="comment">//交换第一个和最后一个元素</span></span><br><span class="line">        $count--; <span class="comment">//去掉最后一个元素后剩余元素再进行调整</span></span><br><span class="line">        adjustHeap($arr, $count, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildHeap</span><span class="params">(&amp;$arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $node = floor(count($arr) / <span class="number">2</span>) - <span class="number">1</span>; <span class="comment">//非叶子节点的最大节点,下标从0开始</span></span><br><span class="line">    <span class="keyword">for</span> ($i = $node; $i &gt;= <span class="number">0</span>; $i--) &#123; <span class="comment">//从最大非叶子节点循环调整每个节点</span></span><br><span class="line">        adjustHeap($arr, count($arr), $i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调整堆,接受maxLen为当前堆需要调整的元素最大值，node为当前要调整的节点</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">adjustHeap</span><span class="params">(&amp;$arr, $maxLen, $node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $lchild = <span class="number">2</span> * $node + <span class="number">1</span>; <span class="comment">//左子树</span></span><br><span class="line">    $rchild = <span class="number">2</span> * $node + <span class="number">2</span>; <span class="comment">//右子树</span></span><br><span class="line"></span><br><span class="line">    $max = $node; <span class="comment">//设置当前节点为最大值的节点,方便后边最大值节点变化时与当前节点比较,确认是否需要交换</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ($lchild &lt; $maxLen || $rchild &lt; $maxLen) &#123; <span class="comment">//左子树和右子树任一个符合条件就进入循环</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($lchild &lt; $maxLen &amp;&amp; $arr[$lchild] &gt; $arr[$max]) &#123; <span class="comment">//左子树大于当前节点值得话设置设置$max</span></span><br><span class="line">            $max = $lchild;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($rchild &lt; $maxLen &amp;&amp; $arr[$rchild] &gt; $arr[$max]) &#123;</span><br><span class="line">            $max = $rchild;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($max != $node) &#123;</span><br><span class="line">            swap($arr, $max, $node);</span><br><span class="line">            $node   = $max; <span class="comment">//把当前节点切换为最大值的那个节点,迭代使其符合堆特性</span></span><br><span class="line">            $lchild = <span class="number">2</span> * $node + <span class="number">1</span>;</span><br><span class="line">            $rchild = <span class="number">2</span> * $node + <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">break</span>; <span class="comment">//没有发生交换就退出</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$arr, $m, $n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $arr[$m] = $arr[$m] ^ $arr[$n];</span><br><span class="line">    $arr[$n] = $arr[$n] ^ $arr[$m];</span><br><span class="line">    $arr[$m] = $arr[$m] ^ $arr[$n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序实现："><a href="#归并排序实现：" class="headerlink" title="归并排序实现："></a>归并排序实现：</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 交换函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(array &amp;$arr,$a,$b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $temp = $arr[$a];</span><br><span class="line">    $arr[$a] = $arr[$b];</span><br><span class="line">    $arr[$b] = $temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 归并算法总函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MergeSort</span><span class="params">(array &amp;$arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $start = <span class="number">0</span>;</span><br><span class="line">    $end = count($arr) - <span class="number">1</span>;</span><br><span class="line">    MSort($arr,$start,$end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MSort</span><span class="params">(array &amp;$arr,$start,$end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//当子序列长度为1时，$start == $end，不用再分组</span></span><br><span class="line">    <span class="keyword">if</span>($start &lt; $end)&#123;</span><br><span class="line">        $mid = floor(($start + $end) / <span class="number">2</span>);	<span class="comment">//将 $arr 平分为 $arr[$start - $mid] 和 $arr[$mid+1 - $end]</span></span><br><span class="line">        MSort($arr,$start,$mid);			<span class="comment">//将 $arr[$start - $mid] 归并为有序的$arr[$start - $mid]</span></span><br><span class="line">        MSort($arr,$mid + <span class="number">1</span>,$end);			<span class="comment">//将 $arr[$mid+1 - $end] 归并为有序的 $arr[$mid+1 - $end]</span></span><br><span class="line">        Merge($arr,$start,$mid,$end);       <span class="comment">//将$arr[$start - $mid]部分和$arr[$mid+1 - $end]部分合并起来成为有序的$arr[$start - $end]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//归并操作</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Merge</span><span class="params">(array &amp;$arr,$start,$mid,$end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $i = $start;</span><br><span class="line">    $j=$mid + <span class="number">1</span>;</span><br><span class="line">    $k = $start;</span><br><span class="line">    $temparr = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>($i!=$mid+<span class="number">1</span> &amp;&amp; $j!=$end+<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">if</span>($arr[$i] &gt;= $arr[$j])&#123;</span><br><span class="line">           $temparr[$k++] = $arr[$j++];</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">else</span>&#123;</span><br><span class="line">           $temparr[$k++] = $arr[$i++];</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将第一个子序列的剩余部分添加到已经排好序的 $temparr 数组中</span></span><br><span class="line">    <span class="keyword">while</span>($i != $mid+<span class="number">1</span>)&#123;</span><br><span class="line">        $temparr[$k++] = $arr[$i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将第二个子序列的剩余部分添加到已经排好序的 $temparr 数组中</span></span><br><span class="line">    <span class="keyword">while</span>($j != $end+<span class="number">1</span>)&#123;</span><br><span class="line">        $temparr[$k++] = $arr[$j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>($i=$start; $i&lt;=$end; $i++)&#123;</span><br><span class="line">        $arr[$i] = $temparr[$i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#至此七大排序整理完毕，然后就边敲边领会吧。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/03/使用Hexo+Github免费搭建博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fullegg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="全蛋的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/02/03/使用Hexo+Github免费搭建博客/" itemprop="url">使用Hexo+Github免费搭建博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-03T13:05:25+08:00">
+                2016-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
+                    <span itemprop="name">搭建博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>快过年了，有时间就给博客搬个家吧。</p>
+<h2 id="相关步骤："><a href="#相关步骤：" class="headerlink" title="相关步骤："></a>相关步骤：</h2><h3 id="1、安装Node-js和Git"><a href="#1、安装Node-js和Git" class="headerlink" title="1、安装Node.js和Git"></a>1、安装Node.js和Git</h3><h3 id="2、准备好Github项目库"><a href="#2、准备好Github项目库" class="headerlink" title="2、准备好Github项目库"></a>2、准备好Github项目库</h3><h3 id="3、安装Hexo"><a href="#3、安装Hexo" class="headerlink" title="3、安装Hexo"></a>3、安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g</span><br><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+<h3 id="4、启动Hexo"><a href="#4、启动Hexo" class="headerlink" title="4、启动Hexo"></a>4、启动Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<h3 id="5、配置Deployment，上传代码到Github-page"><a href="#5、配置Deployment，上传代码到Github-page" class="headerlink" title="5、配置Deployment，上传代码到Github page"></a>5、配置Deployment，上传代码到Github page</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>好了，到此为止，最基本的也是最全面的hexo+github搭建博客完结。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Fullegg" />
+            
+              <p class="site-author-name" itemprop="name">Fullegg</p>
+              <p class="site-description motion-element" itemprop="description">还是写点装B话吧：look to the master, follow the master, walk with the master, see through the master, become the master.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fullegg</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
