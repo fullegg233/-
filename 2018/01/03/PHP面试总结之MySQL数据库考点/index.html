@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="知识总结,MySQL," />
+  <meta name="keywords" content="MySQL,知识总结," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="1、MySQL数据库基础考点1、回顾真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)考官考点：MySQL数据类型延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器 2、MySQL数据类型整数类型：tinyint、smallint、mediumint、int、big">
-<meta name="keywords" content="知识总结,MySQL">
+<meta name="keywords" content="MySQL,知识总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP面试总结之MySQL数据库考点">
 <meta property="og:url" content="http://yoursite.com/2018/01/03/PHP面试总结之MySQL数据库考点/index.html">
 <meta property="og:site_name" content="全蛋的博客">
 <meta property="og:description" content="1、MySQL数据库基础考点1、回顾真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)考官考点：MySQL数据类型延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器 2、MySQL数据类型整数类型：tinyint、smallint、mediumint、int、big">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-02T02:51:04.908Z">
+<meta property="og:updated_time" content="2018-03-02T08:41:04.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP面试总结之MySQL数据库考点">
 <meta name="twitter:description" content="1、MySQL数据库基础考点1、回顾真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)考官考点：MySQL数据类型延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器 2、MySQL数据类型整数类型：tinyint、smallint、mediumint、int、big">
@@ -330,7 +330,18 @@
 <h2 id="6、MySQL事务处理"><a href="#6、MySQL事务处理" class="headerlink" title="6、MySQL事务处理"></a>6、MySQL事务处理</h2><p>事务处理：MySQL提供事务处理的表引擎，InnoDB;服务器层不管事务，由下层的引擎实现，所以同一个事务中，使用多种存储引擎不靠谱；在非事务的表上执行事务操作MySQL不会发出提醒，也不会报错。</p>
 <h2 id="7、MySQL存储过程"><a href="#7、MySQL存储过程" class="headerlink" title="7、MySQL存储过程"></a>7、MySQL存储过程</h2><p>为以后的使用而保存的一条或多条MySQL语句的集合，<br>存储过程：有业务逻辑和流程的集合；可以在存储过程中创建表，更新数据，删除等等。<br>使用场景：通过吧处理封装在容易使用的单元中，简化复杂得操作；保证数据的一致性；简化对变动的管理。</p>
 <h2 id="8、MySQL触发器"><a href="#8、MySQL触发器" class="headerlink" title="8、MySQL触发器"></a>8、MySQL触发器</h2><p>提供给程序员和数据分析员来保证数据完整性的一种方法，它是与表事件相关的特殊额存储过程。<br>使用场景：可通过数据库中的相关表实现级联更改；实时监控某张表中的某个字段的更改而需要做出相应的处理；某些业务编号的生成等；滥用会造成数据库及应用程序的维护困难</p>
-<h2 id="9、真题"><a href="#9、真题" class="headerlink" title="9、真题"></a>9、真题</h2><p>说明表存储引擎InnoDB和MyISAM的区别</p>
+<h2 id="9、真题"><a href="#9、真题" class="headerlink" title="9、真题"></a>9、真题</h2><p>说明表存储引擎InnoDB和MyISAM的区别<br><br><br><br></p>
+<h1 id="2、MySQL创建高性能索引考点"><a href="#2、MySQL创建高性能索引考点" class="headerlink" title="2、MySQL创建高性能索引考点"></a>2、MySQL创建高性能索引考点</h1><h2 id="1、回顾-1"><a href="#1、回顾-1" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：简单描述MySQL中，索引，主键，唯一索引，联合索引的区别，对数据库的性能有什么影响？<br>考挂考点：MySQL索引的基础和类型<br>延伸考点：MySQL索引的创建原则，MySQL索引的注意事项</p>
+<h2 id="2、索引的基础和类型"><a href="#2、索引的基础和类型" class="headerlink" title="2、索引的基础和类型"></a>2、索引的基础和类型</h2><p>索引的基础：索引类似于书籍的目录，要想找到一本书的某个特定主题，需要先查找书的目录，定位对应的页码。<br>存储引擎使用类似的方式进行数据查询，先去索引当中找到对应的值，然后根据匹配的索引找到对应的数据行。<br>索引对性能的影响：大大减少服务器需要扫描的数据量；帮助服务器避免排序和临时表；将随机I/O变为顺序I/O；大大提高查询速度，降低写的速度，占用磁盘。<br>索引的使用场景：对于非常小的表，大部分情况下全表扫描效率更高；中到大型表，索引非常有效；特大型表，建立和使用索引的代价将随之增长，可以使用分区技术来解决。<br>索引的类型：索引有很多种类型，都是实现在存储引擎层的；普通索引：最基本的索引，没有任何约束限制；唯一索引：与普通索引类似，但是具有唯一性约束；主键索引：特殊的唯一索引，不允许有空值；一个表只能有一个主键索引，可以有多个唯一索引；主键索引一定是唯一索引，唯一索引不一定是主键索引；主键可以与外键构成参照完整性约束，防止数据不一致；组合索引：将多个列组合在一起创建索引，可以覆盖多个列；外键索引：只有InnoDB类型的表才可以使用外键索引，保证数据的一致性、完整性和实现级联操作。全文索引：MySQL自带的全文索引只能用于MyISAM，并且只能对英文进行全文检索。</p>
+<h2 id="3、MySQL索引的创建原则"><a href="#3、MySQL索引的创建原则" class="headerlink" title="3、MySQL索引的创建原则"></a>3、MySQL索引的创建原则</h2><p>原则：最适合索引的列是出现在where子句中的列，或连接子句中的列而不是出现在select关键字后的列；索引列的基数越大，索引的效果越好；对字符串进行索引，应该制定一个前缀长度，可以节省大量的索引空间；根据情况创建复合索引，复合索引可以提高查询效率；避免创建过多的索引，索引会额外占用磁盘空间，降低写操作效率；主键尽可能选择较短的数据类型，可以有效减少索引的磁盘占用提高查询效率</p>
+<h2 id="4、MySQL索引的注意事项"><a href="#4、MySQL索引的注意事项" class="headerlink" title="4、MySQL索引的注意事项"></a>4、MySQL索引的注意事项</h2><p>复合索引遵循左前缀原则；like查询，%不能在前，可以使用全文索引；column is null 可以使用索引；如果MySQL估计使用索引比全表扫描更慢，会放弃使用索引；如果or前的条件中的列有索引，后面的没有，索引都不会被用到；列类型是字符串，查询时一定要给值加引号，否则索引失效。</p>
+<h2 id="5、真题"><a href="#5、真题" class="headerlink" title="5、真题"></a>5、真题</h2><p>创建MySQL复合索引时应该注意哪些事项？<br><br><br><br></p>
+<h1 id="3、MySQL的SQL语句编写考点"><a href="#3、MySQL的SQL语句编写考点" class="headerlink" title="3、MySQL的SQL语句编写考点"></a>3、MySQL的SQL语句编写考点</h1><h2 id="1、回顾-2"><a href="#1、回顾-2" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：有A(id,sex,par,c1,c2),B(id,age,c1,c2)两张表，其中A.id与B.id关联，现在要求写出一条SQL语句，将B中age&gt;50的记录的c1,c2更新到A表中统一记录中的c1,c2字段中。<br>考官考点：MySQL的关联update语句<br>延伸考点；MySQL的关联查询语句</p>
+<h2 id="2、MySQL的关联update语句"><a href="#2、MySQL的关联update语句" class="headerlink" title="2、MySQL的关联update语句"></a>2、MySQL的关联update语句</h2><p>关联更新：update A,B set A.c1=B.c1,A.c2=B.c2 where A.id=B.id and B.age&gt;50;<br>内联更新：update A inner join B on A.id=B.id set A.c1=B.c1,A.c2=B.c2 where B.age&gt;50.</p>
+<h2 id="3、MySQL的关联查询语句"><a href="#3、MySQL的关联查询语句" class="headerlink" title="3、MySQL的关联查询语句"></a>3、MySQL的关联查询语句</h2><p>六种关联查询：交叉连接(cross join)，没有任何关联条件，结果是笛卡尔积，结果集会很大，没有意义，很少使用；内连接(inner join)，多表中同时符合某种条件的数据记录的集合；外连接(left outer join/right outer join)，左外连接以左表为主，先查询出左表，按照on后的关联条件匹配右表，没有匹配到的用null填充，可以简写省略outer；联合查询(union 与 union all)，就是把多个结果集集中在一起，union前的结果为基准，需要注意的是联合查询的列数要相等，相同的记录行会合并，如果使用union all不会合并重复的记录行；全连接(full join)MySQL不支持全连接，可以使用left join和union和right join联合使用。<br>嵌套查询：用一条SQL语句的结果作为另外一条SQL语句的条件，select * from A where id in (select id from B)</p>
+<h2 id="4、真题"><a href="#4、真题" class="headerlink" title="4、真题"></a>4、真题</h2><p>为了记录足球比赛的结果，设计表如下<br>team：参数队伍表</p>
+<p><table border="0" cellpadding="0" cellspacing="0"><tr><th>字段名称</th><th>类型</th><th>描述</th></tr><tr><td>teamID</td><td>int</td><td>主键</td></tr><tr><td>teamName</td><td>varchar(20)</td><td>队伍名称</td></tr></table><br>match：赛程表</p>
+<p><table border="0" cellpadding="0" cellspacing="0"><tr><th>字段名称</th><th>类型</th><th>描述</th></tr><tr><td>matchID</td><td>int</td><td>主键</td></tr><tr><td>hostTeamID</td><td>int</td><td>主队ID</td></tr><tr><td>guestTeamID</td><td>int</td><td>客队ID</td></tr><tr><td>matchResult</td><td>varchar(20)</td><td>比赛结果</td></tr><tr><td>matchTime</td><td>Date</td><td>比赛日期</td></tr></table><br>其中，match赛程表中的hostTeamID与guestTeamID都和team表中的teamID关联，查询200006-6-1到2006-7-1之间举行的所有比赛，并且用以下形式列出：拜仁 2:0 不莱梅 2006-6-21</p>
 
       
     </div>
@@ -348,9 +359,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/知识总结/" rel="tag"># 知识总结</a>
-          
             <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/知识总结/" rel="tag"># 知识总结</a>
           
         </div>
       
@@ -523,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、MySQL数据库基础考点"><span class="nav-number">1.</span> <span class="nav-text">1、MySQL数据库基础考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾"><span class="nav-number">1.1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MySQL数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、MySQL数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、MySQL基础操作"><span class="nav-number">1.3.</span> <span class="nav-text">3、MySQL基础操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、MySQL数据表引擎"><span class="nav-number">1.4.</span> <span class="nav-text">4、MySQL数据表引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、MySQL锁机制"><span class="nav-number">1.5.</span> <span class="nav-text">5、MySQL锁机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、MySQL事务处理"><span class="nav-number">1.6.</span> <span class="nav-text">6、MySQL事务处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、MySQL存储过程"><span class="nav-number">1.7.</span> <span class="nav-text">7、MySQL存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、MySQL触发器"><span class="nav-number">1.8.</span> <span class="nav-text">8、MySQL触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、真题"><span class="nav-number">1.9.</span> <span class="nav-text">9、真题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、MySQL数据库基础考点"><span class="nav-number">1.</span> <span class="nav-text">1、MySQL数据库基础考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾"><span class="nav-number">1.1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MySQL数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">2、MySQL数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、MySQL基础操作"><span class="nav-number">1.3.</span> <span class="nav-text">3、MySQL基础操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、MySQL数据表引擎"><span class="nav-number">1.4.</span> <span class="nav-text">4、MySQL数据表引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、MySQL锁机制"><span class="nav-number">1.5.</span> <span class="nav-text">5、MySQL锁机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、MySQL事务处理"><span class="nav-number">1.6.</span> <span class="nav-text">6、MySQL事务处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、MySQL存储过程"><span class="nav-number">1.7.</span> <span class="nav-text">7、MySQL存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、MySQL触发器"><span class="nav-number">1.8.</span> <span class="nav-text">8、MySQL触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、真题"><span class="nav-number">1.9.</span> <span class="nav-text">9、真题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、MySQL创建高性能索引考点"><span class="nav-number">2.</span> <span class="nav-text">2、MySQL创建高性能索引考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾-1"><span class="nav-number">2.1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、索引的基础和类型"><span class="nav-number">2.2.</span> <span class="nav-text">2、索引的基础和类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、MySQL索引的创建原则"><span class="nav-number">2.3.</span> <span class="nav-text">3、MySQL索引的创建原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、MySQL索引的注意事项"><span class="nav-number">2.4.</span> <span class="nav-text">4、MySQL索引的注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、真题"><span class="nav-number">2.5.</span> <span class="nav-text">5、真题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、MySQL的SQL语句编写考点"><span class="nav-number">3.</span> <span class="nav-text">3、MySQL的SQL语句编写考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾-2"><span class="nav-number">3.1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MySQL的关联update语句"><span class="nav-number">3.2.</span> <span class="nav-text">2、MySQL的关联update语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、MySQL的关联查询语句"><span class="nav-number">3.3.</span> <span class="nav-text">3、MySQL的关联查询语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、真题"><span class="nav-number">3.4.</span> <span class="nav-text">4、真题</span></a></li></ol></li></ol></div>
             
 
           </div>
