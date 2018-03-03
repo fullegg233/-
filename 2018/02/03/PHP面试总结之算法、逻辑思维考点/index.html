@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="知识总结,PHP,算法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、常见算法考点1、回顾真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。考官考点：冒泡排序原理和实现延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法 2、算法的概念基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。一个算法具有五个特">
+<meta name="keywords" content="知识总结,PHP,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP面试总结之算法、逻辑思维考点">
+<meta property="og:url" content="http://yoursite.com/2018/02/03/PHP面试总结之算法、逻辑思维考点/index.html">
+<meta property="og:site_name" content="全蛋的博客">
+<meta property="og:description" content="1、常见算法考点1、回顾真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。考官考点：冒泡排序原理和实现延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法 2、算法的概念基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。一个算法具有五个特">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/hRGlF3S.png">
+<meta property="og:updated_time" content="2018-03-03T03:35:26.287Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP面试总结之算法、逻辑思维考点">
+<meta name="twitter:description" content="1、常见算法考点1、回顾真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。考官考点：冒泡排序原理和实现延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法 2、算法的概念基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。一个算法具有五个特">
+<meta name="twitter:image" content="https://i.imgur.com/hRGlF3S.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/03/PHP面试总结之算法、逻辑思维考点/"/>
+
+
+
+
+
+  <title>PHP面试总结之算法、逻辑思维考点 | 全蛋的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">全蛋的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">评论就不开了</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/03/PHP面试总结之算法、逻辑思维考点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fullegg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="全蛋的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP面试总结之算法、逻辑思维考点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-03T17:11:25+08:00">
+                2018-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1、常见算法考点"><a href="#1、常见算法考点" class="headerlink" title="1、常见算法考点"></a>1、常见算法考点</h1><h2 id="1、回顾"><a href="#1、回顾" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。<br>考官考点：冒泡排序原理和实现<br>延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法</p>
+<h2 id="2、算法的概念"><a href="#2、算法的概念" class="headerlink" title="2、算法的概念"></a>2、算法的概念</h2><p>基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。<br>一个算法具有五个特征：有穷性、确切性、输入项、输出项、可行性。</p>
+<h2 id="3、时间复杂度和空间复杂度的概念"><a href="#3、时间复杂度和空间复杂度的概念" class="headerlink" title="3、时间复杂度和空间复杂度的概念"></a>3、时间复杂度和空间复杂度的概念</h2><p>算法评定：算法分析的目的在于选择合适算法和改进算法；一个算法的评价主要从时间复杂度和空间复杂度来考虑。<br>时间复杂度：执行算法所需要的计算工作量。一般来说，计算机算法是问题规模n的函数f(n)，算法的时间复杂度也因此记作T(n)=O(f(n))；问题的规模n越大，算法执行的时间的增长率与f(n)的增长率正相关，称作渐进时间复杂度(Asymptotic Time Complexity)。<br>时间复杂度计算方式：得出算法的计算次数公式；用常数1来取代所有时间中的所有加法常数；在修改后的运行次数函数中，只保留最高阶项；如果最高阶存在且不是1，则去除与这个项相乘的常数。<br>常见时间复杂度：常数阶、线性阶、平方阶、立方阶、对数阶、nlog2n阶、指数阶。<br>最坏的情况：最坏情况时的运行时间，一种保证，如果没有特别说明，说的时间复杂度即为最坏情况的时间复杂度。平均情况：期望的运行时间。<br>空间复杂度：算法需要消耗的内存空间，记作S(n)=O(f(n));包括程序代码所占用的空间，输入数据所占用的空间和辅助变量所占用的空间三个方面，计算和表示方法与时间复杂度类似，一般用复杂度的渐进性来表示。<br>空间复杂度计算方式：有时用空间换取时间。</p>
+<h2 id="4、排序算法"><a href="#4、排序算法" class="headerlink" title="4、排序算法"></a>4、排序算法</h2><p>冒泡排序、直接插入排序、希尔排序、选择排序、快速排序、堆排序、归并排序、基数排序<br><img src="https://i.imgur.com/hRGlF3S.png" alt=""></p>
+<h2 id="5、查找算法"><a href="#5、查找算法" class="headerlink" title="5、查找算法"></a>5、查找算法</h2><p>二分查找：从数组的中间元素开始，如果中间元素正好是要找的元素，搜索结束，如果某一个特定元素大于或者小于中间元素，则在数组大于或者小于中间元素的那一半中查找，而且跟开始一样从中间开始比较，如果某一步骤数组为空，代表找不到。<br>顺序查找：按一定的顺序检查数组中的每一个元素，直到找到所要寻找的特定值为止。<br>总结：二分查找算法的时间复杂度最差是O(log2n)，顺序查找的时间复杂度最差为O(n)，所以二分查找法更快，但是递归情况下，二分查找法更消耗内存。</p>
+<h2 id="6、真题"><a href="#6、真题" class="headerlink" title="6、真题"></a>6、真题</h2><p>请简述时间复杂度和空间复杂度概念<br>对无序数组排序，最优的时间复杂度是什么，用PHP或者JavaScript写出一个实际的例子，并给出算法的名称，该算法的空间复杂度是什么？<br>一个有序数组中，查询特定item是否存在的最优算法是什么？时间复杂度是什么？<br><br><br><br></p>
+<h1 id="2、常见数据结构考点"><a href="#2、常见数据结构考点" class="headerlink" title="2、常见数据结构考点"></a>2、常见数据结构考点</h1><h2 id="1、回顾-1"><a href="#1、回顾-1" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：请简单描述一下数据结构的特征(array(vactor)、linked-list、stack、heap、list、doubly-linked-list、queue、set、map、graph)<br>考官考点：常见数据结构特征</p>
+<h2 id="2、array"><a href="#2、array" class="headerlink" title="2、array"></a>2、array</h2><p>数组，最简单而且应用最广泛的数据结构之一。<br>特性：使用连续的内存来存储、数组中所有的元素必须是相同的类型或类型的衍生(同质数据结构)，元素可以通过下标直接访问。</p>
+<h2 id="3、linked-list"><a href="#3、linked-list" class="headerlink" title="3、linked-list"></a>3、linked-list</h2><p>链表，线性表的一种，最基本、最简单，也是最常用的数据结构。<br>特性：元素之间的关系是一对一的关系（除了第一个和最后一个元素，其他元素都是首尾相接），顺序存储结构和链式存储结构两种存储方式</p>
+<h2 id="4、stack"><a href="#4、stack" class="headerlink" title="4、stack"></a>4、stack</h2><p>栈，和队列相似，一个带有数据存储特性的数据结构。<br>特性：存储数据是先进后出的，栈只有一个出口，只能从栈顶部增加和移除元素。</p>
+<h2 id="5、heap"><a href="#5、heap" class="headerlink" title="5、heap"></a>5、heap</h2><p>堆，一般情况下，堆叫二叉堆，近似完全二叉树的数据结构。<br>特性：子节点的键值或者索引总是小于它的父节点，每个节点的左右子树又是一个二叉堆，根节点最大的堆叫最大堆或者大根堆，最小的堆叫最小堆或者小根堆。</p>
+<h2 id="6、list"><a href="#6、list" class="headerlink" title="6、list"></a>6、list</h2><p>线性表，由零个或多个数据元素组成的有限序列。<br>特性：线性表是一个序列，0个元素构成的线性表是空表，第一个元素无先驱，最后一个元素无后继，其他元素都只有一个先驱和后继，有长度，长度是元素个数，长度有限。</p>
+<h2 id="7、doubly-linked-list"><a href="#7、doubly-linked-list" class="headerlink" title="7、doubly-linked-list"></a>7、doubly-linked-list</h2><p>双向链表：每个元素都是一个对象，每个对象有一个关键字key和两个指针（next和prev）。</p>
+<h2 id="8、queue"><a href="#8、queue" class="headerlink" title="8、queue"></a>8、queue</h2><p>队列：先进先出（FIFO），并发中使用，可以安全将对象从一个任务传给另一个任务。</p>
+<h2 id="9、set"><a href="#9、set" class="headerlink" title="9、set"></a>9、set</h2><p>集合：保存不重复的元素。</p>
+<h2 id="10、map"><a href="#10、map" class="headerlink" title="10、map"></a>10、map</h2><p>字典：关联数组也被叫做字典或者键值对。</p>
+<h2 id="11、graph"><a href="#11、graph" class="headerlink" title="11、graph"></a>11、graph</h2><p>图：通常使用邻接矩阵和邻接表表示，前者易实现但是对于系数矩阵会浪费较多空间，后者使用链表的方式存储信息但是对于图搜索时间复杂度较高</p>
+<h2 id="12、真题"><a href="#12、真题" class="headerlink" title="12、真题"></a>12、真题</h2><p>用PHP实现一个双向队列<br><br><br><br></p>
+<h1 id="3、其他逻辑算法考点"><a href="#3、其他逻辑算法考点" class="headerlink" title="3、其他逻辑算法考点"></a>3、其他逻辑算法考点</h1><h2 id="1、回顾-2"><a href="#1、回顾-2" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：1,1,2,3,5,8,13,21,34…求第30位的数是多少，请用伪代码描述其实现方法。<br>考官考点：逻辑思维能力</p>
+<h2 id="2、真题"><a href="#2、真题" class="headerlink" title="2、真题"></a>2、真题</h2><p>请写一个函数，实现以下功能：字符串“open_door”转换成“OpenDoor”、“make_by_id”转换成“MakeById”<br><br><br><br></p>
+<h1 id="4、模拟内置函数实现考点"><a href="#4、模拟内置函数实现考点" class="headerlink" title="4、模拟内置函数实现考点"></a>4、模拟内置函数实现考点</h1><h2 id="1、回顾-3"><a href="#1、回顾-3" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：不使用PHP函数，用方法写一个反转字符串的函数<br>考官考点：逻辑思维能力，对PHP内置函数的熟悉程度，字符串和数组的处理能力</p>
+<h2 id="2、真题-1"><a href="#2、真题-1" class="headerlink" title="2、真题"></a>2、真题</h2><p>写一个函数，要求不使用array_merge完成多个数组的合并</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/知识总结/" rel="tag"># 知识总结</a>
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/05/PHP面试总结之MVC框架考点/" rel="next" title="PHP面试总结之MVC框架考点">
+                <i class="fa fa-chevron-left"></i> PHP面试总结之MVC框架考点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/13/PHP面试总结之高并发解决方案类考点/" rel="prev" title="PHP面试总结之高并发解决方案类考点">
+                PHP面试总结之高并发解决方案类考点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.JPG"
+                alt="Fullegg" />
+            
+              <p class="site-author-name" itemprop="name">Fullegg</p>
+              <p class="site-description motion-element" itemprop="description">装B话：look to the master, follow the master, walk with the master, see through the master, become the master.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fullegg233" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fullegg233@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、常见算法考点"><span class="nav-number">1.</span> <span class="nav-text">1、常见算法考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾"><span class="nav-number">1.1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、算法的概念"><span class="nav-number">1.2.</span> <span class="nav-text">2、算法的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、时间复杂度和空间复杂度的概念"><span class="nav-number">1.3.</span> <span class="nav-text">3、时间复杂度和空间复杂度的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、排序算法"><span class="nav-number">1.4.</span> <span class="nav-text">4、排序算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、查找算法"><span class="nav-number">1.5.</span> <span class="nav-text">5、查找算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、真题"><span class="nav-number">1.6.</span> <span class="nav-text">6、真题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、常见数据结构考点"><span class="nav-number">2.</span> <span class="nav-text">2、常见数据结构考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾-1"><span class="nav-number">2.1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、array"><span class="nav-number">2.2.</span> <span class="nav-text">2、array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、linked-list"><span class="nav-number">2.3.</span> <span class="nav-text">3、linked-list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、stack"><span class="nav-number">2.4.</span> <span class="nav-text">4、stack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、heap"><span class="nav-number">2.5.</span> <span class="nav-text">5、heap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、list"><span class="nav-number">2.6.</span> <span class="nav-text">6、list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、doubly-linked-list"><span class="nav-number">2.7.</span> <span class="nav-text">7、doubly-linked-list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、queue"><span class="nav-number">2.8.</span> <span class="nav-text">8、queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、set"><span class="nav-number">2.9.</span> <span class="nav-text">9、set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、map"><span class="nav-number">2.10.</span> <span class="nav-text">10、map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11、graph"><span class="nav-number">2.11.</span> <span class="nav-text">11、graph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、真题"><span class="nav-number">2.12.</span> <span class="nav-text">12、真题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、其他逻辑算法考点"><span class="nav-number">3.</span> <span class="nav-text">3、其他逻辑算法考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾-2"><span class="nav-number">3.1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、真题"><span class="nav-number">3.2.</span> <span class="nav-text">2、真题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、模拟内置函数实现考点"><span class="nav-number">4.</span> <span class="nav-text">4、模拟内置函数实现考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾-3"><span class="nav-number">4.1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、真题-1"><span class="nav-number">4.2.</span> <span class="nav-text">2、真题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fullegg</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
