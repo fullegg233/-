@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="PHP,知识总结,网站优化,负载均衡," />
+  <meta name="keywords" content="知识总结,PHP,网站优化,负载均衡," />
 
 
 
@@ -80,17 +80,19 @@
 
 
 <meta name="description" content="1.高并发和大流量解决方案考点1.回顾真题:PHP如何解决网站大流量与高并发的问题？考官考点:高并发架构相关概念，高并发解决方案案例 2.高并发架构相关概念并发:在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行，但任一个时刻点上只有一个程序在处理机上运行。我们所说的高并发：在互联网领域，并发、高并发通常是指并发访问；即在某个时间点，有多少">
-<meta name="keywords" content="PHP,知识总结,网站优化,负载均衡">
+<meta name="keywords" content="知识总结,PHP,网站优化,负载均衡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP面试总结之高并发解决方案类考点">
 <meta property="og:url" content="http://yoursite.com/2018/02/13/PHP面试总结之高并发解决方案类考点/index.html">
 <meta property="og:site_name" content="全蛋的博客">
 <meta property="og:description" content="1.高并发和大流量解决方案考点1.回顾真题:PHP如何解决网站大流量与高并发的问题？考官考点:高并发架构相关概念，高并发解决方案案例 2.高并发架构相关概念并发:在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行，但任一个时刻点上只有一个程序在处理机上运行。我们所说的高并发：在互联网领域，并发、高并发通常是指并发访问；即在某个时间点，有多少">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-04T03:18:52.972Z">
+<meta property="og:image" content="https://s1.ax1x.com/2018/03/04/9yBBHP.png">
+<meta property="og:updated_time" content="2018-03-04T04:20:28.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP面试总结之高并发解决方案类考点">
 <meta name="twitter:description" content="1.高并发和大流量解决方案考点1.回顾真题:PHP如何解决网站大流量与高并发的问题？考官考点:高并发架构相关概念，高并发解决方案案例 2.高并发架构相关概念并发:在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行，但任一个时刻点上只有一个程序在处理机上运行。我们所说的高并发：在互联网领域，并发、高并发通常是指并发访问；即在某个时间点，有多少">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/03/04/9yBBHP.png">
 
 
 
@@ -338,7 +340,12 @@
 <h2 id="4-缓存策略的选择"><a href="#4-缓存策略的选择" class="headerlink" title="4.缓存策略的选择"></a>4.缓存策略的选择</h2><p>适合缓存的内容:不变的图片,如logo,图标等;js css静态文件;可下载的内容,媒体文件.<br>建议使用协商缓存:HTML文件,经常替换的图片,经常修改的js css文件.<br>不建议缓存的内容:用户隐私等敏感数据,经常改变的api数据接口.</p>
 <h2 id="5-nginx配置缓存策略"><a href="#5-nginx配置缓存策略" class="headerlink" title="5.nginx配置缓存策略"></a>5.nginx配置缓存策略</h2><p>add_header指令:添加状态码为2XX和3XX的响应信息<br>add_header name value [always]<br>可以设置Pragma/Cache-Control/Expires,可以继承<br>expires指令:通知浏览器过期时长;expires time;time为负表示cache-control:no-cache,为正或者0表示cache-control:max-age=指定的时间,为max表示Cache-Control设置到10年.<br>协商缓存相关配置:etag指令: etag on|off</p>
 <h2 id="6-前端代码和资源的压缩"><a href="#6-前端代码和资源的压缩" class="headerlink" title="6.前端代码和资源的压缩"></a>6.前端代码和资源的压缩</h2><p>优势:让资源文件更小,加快文件在网络中的传输,让网页更快的展现,降低带宽和流量开销<br>压缩方式:js css 图片 HTML代码的压缩,Gzip压缩<br>JavaScript代码压缩:JavaScript压缩的原理一般是去掉多余的空格和回车,替换长变量名,简化一些代码写法等;JavaScript代码压缩工具很多;常用压缩工具:UglifyJS / YUI Compressor / Closure / Compiler.<br>css代码压缩:原理同js,同样是去除空白符/注释并且优化一些css语义规则等.<br>HTML代码压缩:不建议使用代码压缩,有时会破坏代码结构,可以使用Gzip压缩,当然也可以使用htmlcompressor工具,不过转换后一定要检查代码结构.<br>图片压缩:一般情况下图片在web系统的比重都比较大.压缩工具:tinypng/JpegMini/ImageOptim<br>nginx配置Gzip:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gzip on|off; #是否开启gzip</span><br><span class="line">gzip_buffers 32 4K| 16 8K #缓存(在内存中缓存几块?每块多大)</span><br><span class="line">gzip_comp_level[1-9] #推荐6 压缩级别越高压的越小,越浪费CPU计算资源</span><br><span class="line">gzip_disable #正则匹配UA 不进行gzip的URI</span><br><span class="line">gzip_min_length 200 #开始压缩的最小长度</span><br><span class="line">gzip_http_version 1.0|1.1 #开始压缩的HTTP协议版本</span><br><span class="line">gzip_proxied #设置请求代理服务,该如何缓存内容</span><br><span class="line">gzip_types text/plain application/xml #对哪些类型的文件用压缩</span><br><span class="line">gzip_vary on|off #是否传输gzip压缩标志</span><br></pre></td></tr></table></figure></p>
-<p>其他工具:前端自动化构建工具Grunt</p>
+<p>其他工具:前端自动化构建工具Grunt<br><br><br><br></p>
+<h1 id="5-CDN加速"><a href="#5-CDN加速" class="headerlink" title="5.CDN加速"></a>5.CDN加速</h1><h2 id="1-CDN相关概念"><a href="#1-CDN相关概念" class="headerlink" title="1.CDN相关概念"></a>1.CDN相关概念</h2><p>CDN的全称是Content Delivery Network,即内容分发网络.<br>尽可能避开互联网上有可能影响传输速度和稳定性的瓶颈和环节,是内容传输更快更稳定.<br>在网络各处放置节点服务器,在现有的网络基础上构成一层智能的虚拟网络.<br>CND系统能够实时地根据网络流量和各节点的连接,负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用最近的服务节点上.</p>
+<h2 id="2-使用CDN的优势"><a href="#2-使用CDN的优势" class="headerlink" title="2.使用CDN的优势"></a>2.使用CDN的优势</h2><p>本地cache加速,提高企业站点的访问速度.<br>跨运营商的网络加速,保证不同网络的用户都得到良好的访问质量.<br>远程用户根据DNS负载均衡技术智能自动选择cache服务器.<br>自动生成服务器的镜像缓存服务器,远程用户访问时从cache服务器上读取数据,减少远程访问的带宽,分担网络流量,减轻原站点web服务器负载等功能.<br>广泛分布的CDN节点加上节点之间的智能冗余机制,可以有效的预防黑客入侵.</p>
+<h2 id="3-CDN工作原理"><a href="#3-CDN工作原理" class="headerlink" title="3.CDN工作原理"></a>3.CDN工作原理</h2><p><img src="https://s1.ax1x.com/2018/03/04/9yBBHP.png" alt=""></p>
+<h2 id="4-CDN使用场景"><a href="#4-CDN使用场景" class="headerlink" title="4.CDN使用场景"></a>4.CDN使用场景</h2><p>站点或者应用中大量静态资源的加速分发,例如:CSS,js,图片和HTML<br>大文件下载<br>直播网站等等</p>
+<h2 id="5-实现"><a href="#5-实现" class="headerlink" title="5.实现"></a>5.实现</h2><p>BAT等都有提供CDN服务<br>可用LVS做4层负载均衡<br>可用nginx,varnish,squid,apache trafficserver做7层负载均衡和cache<br>使用squid反向代理,或nginx的反向代理</p>
 
       
     </div>
@@ -356,9 +363,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PHP/" rel="tag"># PHP</a>
-          
             <a href="/tags/知识总结/" rel="tag"># 知识总结</a>
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
           
             <a href="/tags/网站优化/" rel="tag"># 网站优化</a>
           
@@ -535,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-高并发和大流量解决方案考点"><span class="nav-number">1.</span> <span class="nav-text">1.高并发和大流量解决方案考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-回顾"><span class="nav-number">1.1.</span> <span class="nav-text">1.回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-高并发架构相关概念"><span class="nav-number">1.2.</span> <span class="nav-text">2.高并发架构相关概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-高并发解决方案案例"><span class="nav-number">1.3.</span> <span class="nav-text">3.高并发解决方案案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-web资源防盗链"><span class="nav-number">2.</span> <span class="nav-text">2.web资源防盗链</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是防盗链"><span class="nav-number">2.1.</span> <span class="nav-text">1.什么是防盗链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-防盗链的工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">2.防盗链的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-通过Referer实现防盗链"><span class="nav-number">2.3.</span> <span class="nav-text">3.通过Referer实现防盗链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-通过第三方模块加密签名实现防盗链"><span class="nav-number">2.4.</span> <span class="nav-text">4.通过第三方模块加密签名实现防盗链</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-减少HTTP请求次数"><span class="nav-number">3.</span> <span class="nav-text">3.减少HTTP请求次数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么要减少HTTP请求"><span class="nav-number">3.1.</span> <span class="nav-text">1.为什么要减少HTTP请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-减少HTTP请求的方式"><span class="nav-number">3.2.</span> <span class="nav-text">2.减少HTTP请求的方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-浏览器缓存和压缩优化技术"><span class="nav-number">4.</span> <span class="nav-text">4.浏览器缓存和压缩优化技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTTP缓存机制"><span class="nav-number">4.1.</span> <span class="nav-text">1.HTTP缓存机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-本地缓存"><span class="nav-number">4.2.</span> <span class="nav-text">2.本地缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-协商缓存"><span class="nav-number">4.3.</span> <span class="nav-text">3.协商缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-缓存策略的选择"><span class="nav-number">4.4.</span> <span class="nav-text">4.缓存策略的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-nginx配置缓存策略"><span class="nav-number">4.5.</span> <span class="nav-text">5.nginx配置缓存策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-前端代码和资源的压缩"><span class="nav-number">4.6.</span> <span class="nav-text">6.前端代码和资源的压缩</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-高并发和大流量解决方案考点"><span class="nav-number">1.</span> <span class="nav-text">1.高并发和大流量解决方案考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-回顾"><span class="nav-number">1.1.</span> <span class="nav-text">1.回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-高并发架构相关概念"><span class="nav-number">1.2.</span> <span class="nav-text">2.高并发架构相关概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-高并发解决方案案例"><span class="nav-number">1.3.</span> <span class="nav-text">3.高并发解决方案案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-web资源防盗链"><span class="nav-number">2.</span> <span class="nav-text">2.web资源防盗链</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是防盗链"><span class="nav-number">2.1.</span> <span class="nav-text">1.什么是防盗链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-防盗链的工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">2.防盗链的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-通过Referer实现防盗链"><span class="nav-number">2.3.</span> <span class="nav-text">3.通过Referer实现防盗链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-通过第三方模块加密签名实现防盗链"><span class="nav-number">2.4.</span> <span class="nav-text">4.通过第三方模块加密签名实现防盗链</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-减少HTTP请求次数"><span class="nav-number">3.</span> <span class="nav-text">3.减少HTTP请求次数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么要减少HTTP请求"><span class="nav-number">3.1.</span> <span class="nav-text">1.为什么要减少HTTP请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-减少HTTP请求的方式"><span class="nav-number">3.2.</span> <span class="nav-text">2.减少HTTP请求的方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-浏览器缓存和压缩优化技术"><span class="nav-number">4.</span> <span class="nav-text">4.浏览器缓存和压缩优化技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTTP缓存机制"><span class="nav-number">4.1.</span> <span class="nav-text">1.HTTP缓存机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-本地缓存"><span class="nav-number">4.2.</span> <span class="nav-text">2.本地缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-协商缓存"><span class="nav-number">4.3.</span> <span class="nav-text">3.协商缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-缓存策略的选择"><span class="nav-number">4.4.</span> <span class="nav-text">4.缓存策略的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-nginx配置缓存策略"><span class="nav-number">4.5.</span> <span class="nav-text">5.nginx配置缓存策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-前端代码和资源的压缩"><span class="nav-number">4.6.</span> <span class="nav-text">6.前端代码和资源的压缩</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-CDN加速"><span class="nav-number">5.</span> <span class="nav-text">5.CDN加速</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CDN相关概念"><span class="nav-number">5.1.</span> <span class="nav-text">1.CDN相关概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用CDN的优势"><span class="nav-number">5.2.</span> <span class="nav-text">2.使用CDN的优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CDN工作原理"><span class="nav-number">5.3.</span> <span class="nav-text">3.CDN工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-CDN使用场景"><span class="nav-number">5.4.</span> <span class="nav-text">4.CDN使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-实现"><span class="nav-number">5.5.</span> <span class="nav-text">5.实现</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="PHP,知识总结,算法," />
+  <meta name="keywords" content="知识总结,PHP,算法," />
 
 
 
@@ -80,19 +80,19 @@
 
 
 <meta name="description" content="1、常见算法考点1、回顾真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。考官考点：冒泡排序原理和实现延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法 2、算法的概念基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。一个算法具有五个特">
-<meta name="keywords" content="PHP,知识总结,算法">
+<meta name="keywords" content="知识总结,PHP,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP面试总结之算法、逻辑思维考点">
 <meta property="og:url" content="http://yoursite.com/2018/02/03/PHP面试总结之算法、逻辑思维考点/index.html">
 <meta property="og:site_name" content="全蛋的博客">
 <meta property="og:description" content="1、常见算法考点1、回顾真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。考官考点：冒泡排序原理和实现延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法 2、算法的概念基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。一个算法具有五个特">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.imgur.com/hRGlF3S.png">
-<meta property="og:updated_time" content="2018-03-03T03:35:26.287Z">
+<meta property="og:image" content="https://s1.ax1x.com/2018/03/04/9y0kJe.png">
+<meta property="og:updated_time" content="2018-03-04T04:09:20.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP面试总结之算法、逻辑思维考点">
 <meta name="twitter:description" content="1、常见算法考点1、回顾真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。考官考点：冒泡排序原理和实现延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法 2、算法的概念基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。一个算法具有五个特">
-<meta name="twitter:image" content="https://i.imgur.com/hRGlF3S.png">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/03/04/9y0kJe.png">
 
 
 
@@ -327,7 +327,7 @@
         <h1 id="1、常见算法考点"><a href="#1、常见算法考点" class="headerlink" title="1、常见算法考点"></a>1、常见算法考点</h1><h2 id="1、回顾"><a href="#1、回顾" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。<br>考官考点：冒泡排序原理和实现<br>延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法</p>
 <h2 id="2、算法的概念"><a href="#2、算法的概念" class="headerlink" title="2、算法的概念"></a>2、算法的概念</h2><p>基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。<br>一个算法具有五个特征：有穷性、确切性、输入项、输出项、可行性。</p>
 <h2 id="3、时间复杂度和空间复杂度的概念"><a href="#3、时间复杂度和空间复杂度的概念" class="headerlink" title="3、时间复杂度和空间复杂度的概念"></a>3、时间复杂度和空间复杂度的概念</h2><p>算法评定：算法分析的目的在于选择合适算法和改进算法；一个算法的评价主要从时间复杂度和空间复杂度来考虑。<br>时间复杂度：执行算法所需要的计算工作量。一般来说，计算机算法是问题规模n的函数f(n)，算法的时间复杂度也因此记作T(n)=O(f(n))；问题的规模n越大，算法执行的时间的增长率与f(n)的增长率正相关，称作渐进时间复杂度(Asymptotic Time Complexity)。<br>时间复杂度计算方式：得出算法的计算次数公式；用常数1来取代所有时间中的所有加法常数；在修改后的运行次数函数中，只保留最高阶项；如果最高阶存在且不是1，则去除与这个项相乘的常数。<br>常见时间复杂度：常数阶、线性阶、平方阶、立方阶、对数阶、nlog2n阶、指数阶。<br>最坏的情况：最坏情况时的运行时间，一种保证，如果没有特别说明，说的时间复杂度即为最坏情况的时间复杂度。平均情况：期望的运行时间。<br>空间复杂度：算法需要消耗的内存空间，记作S(n)=O(f(n));包括程序代码所占用的空间，输入数据所占用的空间和辅助变量所占用的空间三个方面，计算和表示方法与时间复杂度类似，一般用复杂度的渐进性来表示。<br>空间复杂度计算方式：有时用空间换取时间。</p>
-<h2 id="4、排序算法"><a href="#4、排序算法" class="headerlink" title="4、排序算法"></a>4、排序算法</h2><p>冒泡排序、直接插入排序、希尔排序、选择排序、快速排序、堆排序、归并排序、基数排序<br><img src="https://i.imgur.com/hRGlF3S.png" alt=""></p>
+<h2 id="4、排序算法"><a href="#4、排序算法" class="headerlink" title="4、排序算法"></a>4、排序算法</h2><p>冒泡排序、直接插入排序、希尔排序、选择排序、快速排序、堆排序、归并排序、基数排序<br><img src="https://s1.ax1x.com/2018/03/04/9y0kJe.png" alt=""></p>
 <h2 id="5、查找算法"><a href="#5、查找算法" class="headerlink" title="5、查找算法"></a>5、查找算法</h2><p>二分查找：从数组的中间元素开始，如果中间元素正好是要找的元素，搜索结束，如果某一个特定元素大于或者小于中间元素，则在数组大于或者小于中间元素的那一半中查找，而且跟开始一样从中间开始比较，如果某一步骤数组为空，代表找不到。<br>顺序查找：按一定的顺序检查数组中的每一个元素，直到找到所要寻找的特定值为止。<br>总结：二分查找算法的时间复杂度最差是O(log2n)，顺序查找的时间复杂度最差为O(n)，所以二分查找法更快，但是递归情况下，二分查找法更消耗内存。</p>
 <h2 id="6、真题"><a href="#6、真题" class="headerlink" title="6、真题"></a>6、真题</h2><p>请简述时间复杂度和空间复杂度概念<br>对无序数组排序，最优的时间复杂度是什么，用PHP或者JavaScript写出一个实际的例子，并给出算法的名称，该算法的空间复杂度是什么？<br>一个有序数组中，查询特定item是否存在的最优算法是什么？时间复杂度是什么？<br><br><br><br></p>
 <h1 id="2、常见数据结构考点"><a href="#2、常见数据结构考点" class="headerlink" title="2、常见数据结构考点"></a>2、常见数据结构考点</h1><h2 id="1、回顾-1"><a href="#1、回顾-1" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：请简单描述一下数据结构的特征(array(vactor)、linked-list、stack、heap、list、doubly-linked-list、queue、set、map、graph)<br>考官考点：常见数据结构特征</p>
@@ -363,9 +363,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PHP/" rel="tag"># PHP</a>
-          
             <a href="/tags/知识总结/" rel="tag"># 知识总结</a>
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
           
             <a href="/tags/算法/" rel="tag"># 算法</a>
           
