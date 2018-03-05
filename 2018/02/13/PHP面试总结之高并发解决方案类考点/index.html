@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s1.ax1x.com/2018/03/04/9yBBHP.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/03/04/9yjPJK.png">
-<meta property="og:updated_time" content="2018-03-05T09:52:08.447Z">
+<meta property="og:updated_time" content="2018-03-05T12:59:16.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP面试总结之高并发解决方案类考点">
 <meta name="twitter:description" content="1.高并发和大流量解决方案考点1.回顾真题:PHP如何解决网站大流量与高并发的问题？考官考点:高并发架构相关概念，高并发解决方案案例 2.高并发架构相关概念并发:在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行，但任一个时刻点上只有一个程序在处理机上运行。我们所说的高并发：在互联网领域，并发、高并发通常是指并发访问；即在某个时间点，有多少">
@@ -480,7 +480,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -821,7 +822,7 @@
         var gitment = new Gitmint({
             id: window.location.pathname, 
             owner: 'fullegg233',
-            repo: 'fullegg.cn',
+            repo: 'fullegg233.github.io',
             
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
             
@@ -836,7 +837,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     

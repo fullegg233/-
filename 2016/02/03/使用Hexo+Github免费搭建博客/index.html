@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="全蛋的博客">
 <meta property="og:description" content="快过年了，有时间就给博客搬个家吧。 相关步骤：1、安装Node.js和Git2、准备好Github项目库3、安装Hexo12$ npm install hexo -g$ hexo init 4、启动Hexo12$ hexo g$ hexo s 5、配置Deployment，上传代码到Github page12$ npm install hexo-deployer-git --save$ hexo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-28T14:33:07.630Z">
+<meta property="og:updated_time" content="2018-03-05T12:56:57.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo+Github免费搭建博客">
 <meta name="twitter:description" content="快过年了，有时间就给博客搬个家吧。 相关步骤：1、安装Node.js和Git2、准备好Github项目库3、安装Hexo12$ npm install hexo -g$ hexo init 4、启动Hexo12$ hexo g$ hexo s 5、配置Deployment，上传代码到Github page12$ npm install hexo-deployer-git --save$ hexo">
@@ -419,7 +419,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -760,7 +761,7 @@
         var gitment = new Gitmint({
             id: window.location.pathname, 
             owner: 'fullegg233',
-            repo: 'fullegg.cn',
+            repo: 'fullegg233.github.io',
             
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
             
@@ -775,7 +776,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     

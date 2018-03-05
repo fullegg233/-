@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="全蛋的博客">
 <meta property="og:description" content="冒泡排序实现：12345678910111213141516171819function bubbleSort($arr)&amp;#123;	if(!is_array($arr)) &amp;#123;return false;&amp;#125;	$cnt = count($arr);	for( $i = 0; $i &amp;lt; $cnt; $i++)&amp;#123;		for( $j = 0; $j &amp;lt; $cnt-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-01T21:06:17.045Z">
+<meta property="og:updated_time" content="2018-03-05T12:57:10.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见排序算法总结">
 <meta name="twitter:description" content="冒泡排序实现：12345678910111213141516171819function bubbleSort($arr)&amp;#123;	if(!is_array($arr)) &amp;#123;return false;&amp;#125;	$cnt = count($arr);	for( $i = 0; $i &amp;lt; $cnt; $i++)&amp;#123;		for( $j = 0; $j &amp;lt; $cnt-">
@@ -426,7 +426,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -767,7 +768,7 @@
         var gitment = new Gitmint({
             id: window.location.pathname, 
             owner: 'fullegg233',
-            repo: 'fullegg.cn',
+            repo: 'fullegg233.github.io',
             
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
             
@@ -782,7 +783,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     

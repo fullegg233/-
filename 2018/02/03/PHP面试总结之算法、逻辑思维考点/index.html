@@ -88,7 +88,7 @@
 <meta property="og:description" content="1、常见算法考点1、回顾真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。考官考点：冒泡排序原理和实现延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法 2、算法的概念基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。一个算法具有五个特">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s1.ax1x.com/2018/03/04/9y0kJe.png">
-<meta property="og:updated_time" content="2018-03-04T04:09:20.254Z">
+<meta property="og:updated_time" content="2018-03-05T12:59:11.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP面试总结之算法、逻辑思维考点">
 <meta name="twitter:description" content="1、常见算法考点1、回顾真题：请写出常见的排序算法，并用PHP实现冒泡排序，将数组按照从小到大的方式进行排序。考官考点：冒泡排序原理和实现延伸考点：算法的概念，时间复杂度和空间复杂度的概念，常见排序算法，常见查找算法 2、算法的概念基本概念：解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作；一个问题可以有多种算法，每种算法都有不同的效率。一个算法具有五个特">
@@ -444,7 +444,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -785,7 +786,7 @@
         var gitment = new Gitmint({
             id: window.location.pathname, 
             owner: 'fullegg233',
-            repo: 'fullegg.cn',
+            repo: 'fullegg233.github.io',
             
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
             
@@ -800,7 +801,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     

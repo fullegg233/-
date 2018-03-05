@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="全蛋的博客">
 <meta property="og:description" content="1、MySQL数据库基础考点1、回顾真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)考官考点：MySQL数据类型延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器 2、MySQL数据类型整数类型：tinyint、smallint、mediumint、int、big">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-03T04:04:56.165Z">
+<meta property="og:updated_time" content="2018-03-05T12:58:50.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP面试总结之MySQL数据库考点">
 <meta name="twitter:description" content="1、MySQL数据库基础考点1、回顾真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)考官考点：MySQL数据类型延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器 2、MySQL数据类型整数类型：tinyint、smallint、mediumint、int、big">
@@ -453,7 +453,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -794,7 +795,7 @@
         var gitment = new Gitmint({
             id: window.location.pathname, 
             owner: 'fullegg233',
-            repo: 'fullegg.cn',
+            repo: 'fullegg233.github.io',
             
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
             
@@ -809,7 +810,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     

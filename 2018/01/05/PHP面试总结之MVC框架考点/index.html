@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="全蛋的博客">
 <meta property="og:description" content="1、MVC框架基本工作原理考点1、回顾真题：谈谈你对MVC的认识，介绍几种目前比较流行的MVC框架考官考点：MVC工作原理，常见MVC框架延伸考点：单一入口的工作原理，模板引擎的理解 2、MVC工作原理工作原理：Model、View、Controller 3、常见MVC框架ThinkPHP、Yii2、CI、Yaf、Phalcon等 4、单一入口的工作原理用一个处理程序文件处理所有的HTTP请求，根">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-02T12:56:03.890Z">
+<meta property="og:updated_time" content="2018-03-05T12:58:27.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP面试总结之MVC框架考点">
 <meta name="twitter:description" content="1、MVC框架基本工作原理考点1、回顾真题：谈谈你对MVC的认识，介绍几种目前比较流行的MVC框架考官考点：MVC工作原理，常见MVC框架延伸考点：单一入口的工作原理，模板引擎的理解 2、MVC工作原理工作原理：Model、View、Controller 3、常见MVC框架ThinkPHP、Yii2、CI、Yaf、Phalcon等 4、单一入口的工作原理用一个处理程序文件处理所有的HTTP请求，根">
@@ -428,7 +428,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -769,7 +770,7 @@
         var gitment = new Gitmint({
             id: window.location.pathname, 
             owner: 'fullegg233',
-            repo: 'fullegg.cn',
+            repo: 'fullegg233.github.io',
             
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
             
@@ -784,7 +785,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     
