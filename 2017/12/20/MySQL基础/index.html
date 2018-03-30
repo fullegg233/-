@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="知识总结,MySQL," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、回顾真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)考官考点：MySQL数据类型延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器 2、MySQL数据类型整数类型：tinyint、smallint、mediumint、int、bigint;属性：unsigne">
+<meta name="keywords" content="知识总结,MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础">
+<meta property="og:url" content="http://yoursite.com/2017/12/20/MySQL基础/index.html">
+<meta property="og:site_name" content="全蛋的博客">
+<meta property="og:description" content="1、回顾真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)考官考点：MySQL数据类型延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器 2、MySQL数据类型整数类型：tinyint、smallint、mediumint、int、bigint;属性：unsigne">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-30T08:31:15.300Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL基础">
+<meta name="twitter:description" content="1、回顾真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)考官考点：MySQL数据类型延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器 2、MySQL数据类型整数类型：tinyint、smallint、mediumint、int、bigint;属性：unsigne">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/20/MySQL基础/"/>
+
+
+
+
+
+  <title>MySQL基础 | 全蛋的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">全蛋的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/MySQL基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fullegg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="全蛋的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T15:05:25+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、回顾"><a href="#1、回顾" class="headerlink" title="1、回顾"></a>1、回顾</h2><p>真题：请写出下面MySQL数据类型表达的意义(int(0)、char(16)、varchar(16)、datetime、text)<br>考官考点：MySQL数据类型<br>延伸考点：MySQL基础操作，MySQL存储引擎，MySQL锁机制，MySQL事务处理、存储过程、触发器</p>
+<h2 id="2、MySQL数据类型"><a href="#2、MySQL数据类型" class="headerlink" title="2、MySQL数据类型"></a>2、MySQL数据类型</h2><p>整数类型：tinyint、smallint、mediumint、int、bigint;属性：unsigned;长度：可以为整数类型指定宽度，例如：int(11)、对大多数应用是没有意义的，它不会限制值得合法范围，只会影响显示字符的个数。<br>实数类型：float、double、decimal；decimal可存储比bigint还大的整数，还可以用于存储精确的小数；float和double类型支持使用标准的浮点进行近似计算。<br>字符串类型：varchar、char、text、blog;varchar类型用于存储可变长字符串，它比定长类型更节省空间；varchar使用1或2个额外字节记录字符串的长度，列长度小于255字节，使用1个字节表示，否则用2个；varchar长度，如果存储内容超出指定长度，会被截断；char是定长的，根据定义的字符串长度分配足够的空间；char会根据需要采用空格进行填充以方便比较；char适合存储很短的字符串，或者所有值都接近同一个长度；char长度，超出设定的长度，会被截断；对于经常变更的数据，char比varchar更好，char不容易产生碎片；对于非常短的列，char比varchar在存储空间上更有效率；只分配真正需要的空间，更长的列会消耗更多的内存；尽量避免使用blog/text类型，查询会使用临时表，导致严重的性能开销。<br>枚举类型：有时可以使用枚举代替常用的字符串类型，把不重复的集合存储成一个预定义的集合；非常紧凑，把列表值压缩到一个或两个字节；内部存储的是整数；尽量避免使用数字作为enum枚举的常量，易混乱；排序是按照内部存储的整数进行排序；枚举表会使表大小大大减小。<br>日期和时间类型：尽量使用timestamp，比datetime空间效率高；用整数保存时间戳的格式通常不方便处理；如果需要存储微秒，可以使用bigint存储。<br>列属性：auto_increment、default、not null、zerofill</p>
+<h2 id="3、MySQL基础操作"><a href="#3、MySQL基础操作" class="headerlink" title="3、MySQL基础操作"></a>3、MySQL基础操作</h2><p>常见操作：MySQL的连接和关闭：mysql -u -p -h -P;其他：\G、\c、\q、\s、\h、\d</p>
+<h2 id="4、MySQL数据表引擎"><a href="#4、MySQL数据表引擎" class="headerlink" title="4、MySQL数据表引擎"></a>4、MySQL数据表引擎</h2><p>InnoDB表引擎：默认事务型引擎，最重要最广泛的存储引擎，性能非常优秀；数据存储在共享表空间，可以通过配置分开；对主键查询的性能高于其他类型的存储引擎；内部做了很多优化，从磁盘读取数据是自动在内存构建hash索引，插入数据是自动构建插入缓冲区；通过一些机制和工具支持真正的热备份；支持崩溃后的安全恢复；支持行级锁；支持外键。<br>MyISAM表引擎：5.1版本前，MyISAM是默认的存储引擎；拥有全文索引、压缩、空间函数；不支持事务和行级锁，不支持崩溃后的安全恢复；表存储在两个文件，MYD和MYI;设计简单，某些场景下性能很好<br>其他表引擎：Archive、Blackhole、CSV、Memory;优先选择InnoDB;</p>
+<h2 id="5、MySQL锁机制"><a href="#5、MySQL锁机制" class="headerlink" title="5、MySQL锁机制"></a>5、MySQL锁机制</h2><p>基础概念：表锁是日常开发当中常见的问题，因此也是面试当中最常见的考点，当多个查询同一时刻进行数据修改时，就会产生并发控制的问题；共享锁和排他锁，其实就是读锁和写锁；<br>读锁：共享的，不堵塞，多个用户可以同时读一个资源，互不干扰。<br>写锁：排他的，一个写锁会阻塞其他的写锁和读锁，这样可以只允许一个人进行写入，防止其他用户读取正在写入的资源。<br>锁粒度：表锁，系统性能开销最小，会锁定整张表，MyISAM使用表锁；行锁，最大程度的支持并发处理，但是也带来了最大的锁开销，InnoDB实现行级锁。</p>
+<h2 id="6、MySQL事务处理"><a href="#6、MySQL事务处理" class="headerlink" title="6、MySQL事务处理"></a>6、MySQL事务处理</h2><p>事务处理：MySQL提供事务处理的表引擎，InnoDB;服务器层不管事务，由下层的引擎实现，所以同一个事务中，使用多种存储引擎不靠谱；在非事务的表上执行事务操作MySQL不会发出提醒，也不会报错。</p>
+<h2 id="7、MySQL存储过程"><a href="#7、MySQL存储过程" class="headerlink" title="7、MySQL存储过程"></a>7、MySQL存储过程</h2><p>为以后的使用而保存的一条或多条MySQL语句的集合，<br>存储过程：有业务逻辑和流程的集合；可以在存储过程中创建表，更新数据，删除等等。<br>使用场景：通过吧处理封装在容易使用的单元中，简化复杂得操作；保证数据的一致性；简化对变动的管理。</p>
+<h2 id="8、MySQL触发器"><a href="#8、MySQL触发器" class="headerlink" title="8、MySQL触发器"></a>8、MySQL触发器</h2><p>提供给程序员和数据分析员来保证数据完整性的一种方法，它是与表事件相关的特殊额存储过程。<br>使用场景：可通过数据库中的相关表实现级联更改；实时监控某张表中的某个字段的更改而需要做出相应的处理；某些业务编号的生成等；滥用会造成数据库及应用程序的维护困难</p>
+<h2 id="9、真题"><a href="#9、真题" class="headerlink" title="9、真题"></a>9、真题</h2><p>说明表存储引擎InnoDB和MyISAM的区别</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/知识总结/" rel="tag"># 知识总结</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/12/Linux基础/" rel="next" title="Linux基础">
+                <i class="fa fa-chevron-left"></i> Linux基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/21/MySQL之创建高性能索引/" rel="prev" title="MySQL之创建高性能索引">
+                MySQL之创建高性能索引 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.JPG"
+                alt="Fullegg" />
+            
+              <p class="site-author-name" itemprop="name">Fullegg</p>
+              <p class="site-description motion-element" itemprop="description">写博客总结知识</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fullegg233" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fullegg233@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、回顾"><span class="nav-number">1.</span> <span class="nav-text">1、回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、MySQL数据类型"><span class="nav-number">2.</span> <span class="nav-text">2、MySQL数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、MySQL基础操作"><span class="nav-number">3.</span> <span class="nav-text">3、MySQL基础操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、MySQL数据表引擎"><span class="nav-number">4.</span> <span class="nav-text">4、MySQL数据表引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、MySQL锁机制"><span class="nav-number">5.</span> <span class="nav-text">5、MySQL锁机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、MySQL事务处理"><span class="nav-number">6.</span> <span class="nav-text">6、MySQL事务处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、MySQL存储过程"><span class="nav-number">7.</span> <span class="nav-text">7、MySQL存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、MySQL触发器"><span class="nav-number">8.</span> <span class="nav-text">8、MySQL触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、真题"><span class="nav-number">9.</span> <span class="nav-text">9、真题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fullegg</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
