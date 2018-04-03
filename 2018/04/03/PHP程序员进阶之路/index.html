@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,进阶之路," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基础阶段(PHP程序员,1-2年)重点LNMP基本操作与配置,PHP基础开发能力 目标从按照Linux服务器,搭建LNMP环境,到建起一个简单的PHP站点,都能独立完成;能够独立开发一个中型PHP系统的功能模块 知识点 Linux:基本的Linux命令(查找/检索/编辑文件/tail查看日志),能写简单的shell脚本/awk/sed脚本命令等 Nginx:从源码编译安装,核心配置,能够让Ngi">
+<meta name="keywords" content="PHP,进阶之路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP程序员进阶之路">
+<meta property="og:url" content="http://yoursite.com/2018/04/03/PHP程序员进阶之路/index.html">
+<meta property="og:site_name" content="全蛋的博客">
+<meta property="og:description" content="基础阶段(PHP程序员,1-2年)重点LNMP基本操作与配置,PHP基础开发能力 目标从按照Linux服务器,搭建LNMP环境,到建起一个简单的PHP站点,都能独立完成;能够独立开发一个中型PHP系统的功能模块 知识点 Linux:基本的Linux命令(查找/检索/编辑文件/tail查看日志),能写简单的shell脚本/awk/sed脚本命令等 Nginx:从源码编译安装,核心配置,能够让Ngi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-03T06:55:08.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP程序员进阶之路">
+<meta name="twitter:description" content="基础阶段(PHP程序员,1-2年)重点LNMP基本操作与配置,PHP基础开发能力 目标从按照Linux服务器,搭建LNMP环境,到建起一个简单的PHP站点,都能独立完成;能够独立开发一个中型PHP系统的功能模块 知识点 Linux:基本的Linux命令(查找/检索/编辑文件/tail查看日志),能写简单的shell脚本/awk/sed脚本命令等 Nginx:从源码编译安装,核心配置,能够让Ngi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/03/PHP程序员进阶之路/"/>
+
+
+
+
+
+  <title>PHP程序员进阶之路 | 全蛋的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">全蛋的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/03/PHP程序员进阶之路/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fullegg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="全蛋的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP程序员进阶之路</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T11:00:23+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/博客/" itemprop="url" rel="index">
+                    <span itemprop="name">博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><hr></p>
+<h1 id="基础阶段-PHP程序员-1-2年"><a href="#基础阶段-PHP程序员-1-2年" class="headerlink" title="基础阶段(PHP程序员,1-2年)"></a>基础阶段(PHP程序员,1-2年)</h1><h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><p>LNMP基本操作与配置,PHP基础开发能力</p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>从按照Linux服务器,搭建LNMP环境,到建起一个简单的PHP站点,都能独立完成;能够独立开发一个中型PHP系统的功能模块</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>Linux:基本的Linux命令(查找/检索/编辑文件/tail查看日志),能写简单的shell脚本/awk/sed脚本命令等</li>
+<li>Nginx:从源码编译安装,核心配置,能够让Nginx+php-fpm正常工作</li>
+<li>MySQL:从源码编译安装,基本的命令行操作MySQL(不要依赖工具),知道InnoDB/MyISAM的区别,知道如何选择引擎和编码</li>
+<li>PHP:系统的学习一遍PHP本身,熟悉和使用各种MySQL链接库API(mysqli/PDO等),至少熟练掌握一种主流的PHP框架(TP/Yii/Laravel等),了解基本MVC运行机制,了解一些主流PHP框架之间的区别</li>
+<li>前端:适当学习下HTML/CSS/JS等相关知识,能够写一些基本的JS脚本,能够看懂别人写的前端代码,能够修改一些简单的功能</li>
+<li>系统架构设计:能够完成小型系统的基本设计,包括简单的数据库设计,能够完成基本的 浏览器-&gt; Nginx+PHP -&gt; 数据库 架构的设计开发工作;能够支持每天几十万到数百万流量网站的开发维护工作<br><hr><h1 id="提高阶段-高级PHP开发工程师-2-3年"><a href="#提高阶段-高级PHP开发工程师-2-3年" class="headerlink" title="提高阶段(高级PHP开发工程师,2-3年)"></a>提高阶段(高级PHP开发工程师,2-3年)</h1></li>
+</ul>
+<h2 id="重点-1"><a href="#重点-1" class="headerlink" title="重点"></a>重点</h2><p>玩转LNMP搭建和配置,精通各种大流量高并发场景的中型PHP系统开发</p>
+<h2 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h2><p>能够独立完成LNMP环境搭建,根据项目需要熟练进行各种常规配置;有能力定位和解决大部分开发和线上问题;有能力独立完成一个中型系统的架构设计,具备一定的团队领导力,能够带领10人以内的小团队完成一个中型系统的开发,能够独立完成一个大型系统的模块架构和开发工作</p>
+<h2 id="知识点-1"><a href="#知识点-1" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>Linux:能够流畅的使用Shell脚本来完成很多自动化的工作;awk/sed/perl 也操作的不错,能够完成很多文本处理和统计等工作;了解基本的Linux服务,知道如何查看Linux的性能指标数据,知道基本的Linux下面的问题跟踪等</li>
+<li>Nginx:了解复杂一些的Nginx配置;包括多核配置/events/proxy_pass/sendfile/tcp_*配置,知道超时等相关配置对性能的影响;知道nginx除了webserver,还能承担代理服务器/反向静态服务器等配置;知道基本的nginx配置调优;知道如何配置权限/编译一个nginx扩展到nginx;知道基本的nginx运行原理(master/worker机制,epoll),知道为什么nginx性能比apache性能好等知识</li>
+<li>MySQL/MongoDB:掌握一些常规SQL优化技巧(group by/order by/rand优化等);能够冷热备份MySQL数据,知道影响InnoDB/MyISAM性能的配置选项,知道这些选项配置成为多少值合适;另外也了解一些特殊的配置选项,比如知道如何搭建MySQL主从同步的环境,知道各个binlog_format的区别;知道MySQL的性能追查,包括slow_log/explain等,还知道基本的索引建立处理等知识;原理方面了解基本的MySQL架构(Server+存储引擎),知道基本的InnoDB/MyISAM索引存储结构和不同(聚簇索引,B树);知道基本的InnoDB事务处理机制;了解大部分MySQL异常情况的处理方案.条件允许的情况下,建议了解一下NoSQL的代表MongoDB数据库,顺便对比与MySQL的差别,同时能够在合适的应用场景安全谨慎的使用MongoDB,知道基本的PHP+MongoDB的结合开发</li>
+<li>Redis/Memcached:在大部分中型系统里面一定会涉及到缓存处理,所以一定要了解基本的缓存;知道Memcached和Redis的异同和应用场景,能够独立安装Redis/Memcached,了解Memcached的一些基本特性和限制,比如最大的value值,知道PHP跟它们的使用结合;了解Redis基本工作原理和使用,了解常规的数据类型,知道什么场景应用什么类型,了解Redis的事务等.原理部分:能够大概了解Memcached的内存结构(slab机制),了解Redis常用数据类型底层实现存储结构(SDS/链表/SkipList/HashTable)等,顺便了解一下Redis的事务/RDB/AOF等机制更好</li>
+<li>PHP:能够随意安装PHP和各种第三方扩展的编译安装配置;了解php-fpm的大部分配置选项和含义(如max_requests/max_children/request_terminate_timeout之类的影响性能的配置),知道mod_php/fastcgi的区别;对PHP面向对象有深入大的理解,了解SPL/语法层面的特殊特性(如反射之类);在框架方面已经阅读过一个以上常见PHP MVC框架的代码,知道基本PHP框架内部实现机制和设计思想;在PHP开发中已经能够熟练使用常规的设计模式来进行开发(抽象工厂/单例/观察者/命令链/策略/适配器等模式);建议开发自己的PHP MVC框架来充分让开发自由化,让自己深入理解MVC模式,也让自己能够在业务项目开发里快速升级;熟悉PHP的各种代码优化方法,熟悉大部分PHP安全方面问题的解决处理;熟悉基本的PHP执行的机制原理(Zend引擎/扩展基本工作机制)</li>
+<li>C/C++:开始涉猎一定的C/C++语言,能够写基本的C/C++代码,对基本的C/C++语法熟悉(指针/数组操作/字符串/常规标准API)和数据结构(链表/树/哈希/队列)有一定的熟悉;对Linux下的C语言开发有基本的了解概念,会简单的makefile文件编写,能够使用简单的GCC/GDB的程序编译简单调试工作;对基本的网络编程有大概了解</li>
+<li>前端:熟悉基本的HTTP协议(协议代码2<strong>/3</strong>/4<strong>/5</strong>,基本的HTTP交互头);深入写出稍微优雅的HTML+CSS+JavaScript,或者能够大致简单使用某些前端框架(jQuery/YUI/ExtJS/RequireJS/AngularJS/Bootstrap之类);深入学习JavaScript编程,比如闭包机制/DOM处理,读jQuery源码深入学习</li>
+<li>系统架构设计:能够设计大部分中型系统的网站架构/数据库/基本PHP框架选型;性能测试排查处理等;能够完成类似: 浏览器 -&gt; CND(Squid) -&gt; Nginx+PHP -&gt; 缓存 -&gt; 数据库结构 网站的基本设计和开发维护;能够支撑每天数百万到千万流量基本网站的开发维护工作<br><hr><h1 id="高级阶段-PHP系统架构师-长期"><a href="#高级阶段-PHP系统架构师-长期" class="headerlink" title="高级阶段(PHP系统架构师,长期)"></a>高级阶段(PHP系统架构师,长期)</h1></li>
+</ul>
+<h2 id="重点-2"><a href="#重点-2" class="headerlink" title="重点"></a>重点</h2><p>LNMP系统架构能力,至少选择一个领域彻底深入进去,同时尽力拓宽知识面,为架构和技术决策提高眼界</p>
+<h2 id="目标-2"><a href="#目标-2" class="headerlink" title="目标"></a>目标</h2><p>能够独立完成各种LNMP系统的架构工作,能够杂某个领域Hold住全场,能够解决该领域各种复杂问题,提供较为专业的技术支持和决策</p>
+<h2 id="知识点-2"><a href="#知识点-2" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>Linux:能够使用很多高级复杂的命令完成工作(watch/tcpdump/starce/ldd/ar等);能够编写比较复杂的shell脚本(超过500行)来协助完成很多包括备份/自动化处理/监控等工作;对awk/sed/perl等应用已经如火纯青,能够随意操作控制处理文本,统计分析各种复杂格式的数据;对Linux内部机制有一些了解,对内核模块加载/启动错误等等有个基本的处理;同时对一些其他相关的东西也了解(如NFS/磁盘管理)等等</li>
+<li>Nginx:能够把Nginx操作的很熟练,能够对Nginx进行更深入的运维工作,比如监控/性能优化/复杂问题处理等等;看个人兴趣,更多方面可以考虑侧重在关于Nginx工作原理部分的深入学习,主要表现在阅读源码开始,比如具体的master/worker工作机制,Nginx内部的事务处理,内存管理等等;同时可以学习Nginx扩展的开发,可以定制一些自己私有的扩展;同时可以对Nginx+Lua有一定程度地了解,看看是否可以结合应用出更好的模式;这个阶段的要求是对Nginx原理的深入理解,可以考虑成为Nginx方向的深入专业者</li>
+<li>MySQL/MongoDB:能够完成一些复杂操作,比如大批量数据的导入导出,线上超大表的表结构更改或者增删索引字段等高危操作;能够处理更多复杂的MySQL的问题,比如各种问题的追查,主从同步延迟问题的解决/跨机房同步数据方案/MySQL高可用架构等都有涉及了解;MySQL应用层面,对MySQL的核心关键技术比较熟悉,比如事务机制(隔离级别/锁等)/对触发器和分区等技术有一定了解和应用;MySQL性能方面,有包括磁盘优化(SAS迁移到SSD)/服务器优化(内存/服务器本身配置)/除了二阶段的其它核心性能优化选项(innodb_log_buffer_size/back_log/table_open_cache/thread_cache_size/innodb_lock_wait_timeout等)/连接池软件选择应用,对show*(show status/show profile)类的操作语句有深入了解,能够完成大部分的性能问题追查;MySQL备份技术的深入熟悉,包括灾备还原/对Binlog的深入理解,冷热备份,多IDC备份等;在MySQL原理方面,有更多了解,比如对MySQL的工作机制开始阅读部分源码,比如对主从同步(复制)技术的源码学习,或者对某个存储引擎(MyISAM/InnoDB/TokuDB)源码的学习理解,可以参考CSV引擎开发自己简单的存储引擎来保存一些数据,增强对MySQL的理解,还可以往DBA方向发展.MongoDB层面,可以考虑比如说在写少读多的情况开始在线上应用MongoDB,或者是做一些线上的数据分析处理的操作,具体场景可以按照工作来,不过核心是要更好的深入理解RMDBS和NoSQL的不同场景下面的应用,还可以深入学习一下MongoDB的工作机制</li>
+<li>Redis/Memcached:建议阅读Memcached的源码,特别是内存管理部分,方便深入理解;Redis部分,可以多做一些复杂的数据结构的应用(zset来做排行榜排序操作/事务处理用来保证原子性在秒杀类场景应用之类的使用操作);多涉及aof等同步机制的学习应用,设计一个高可用的Redis应用架构和集群;建议可以深入的学习一下Redis的源码,把在第二阶段积累的知识都可以应用上,特别可以阅读和充分学习一下包括核心事件管理/内存管理/内部核心数据结构等.如果兴趣允许,可以成为一个Redis方面非常专业的使用者</li>
+<li>PHP:从基本代码应用上面来说,能够解决在PHP开发中遇到95%的问题,了解大部分PHP的技巧;对大部分的PHP框架能够迅速在一天内上手使用,并且了解各个主流PHP框架的优缺点,能够迅速为新项目做技术选型;在配置方面,了解一些比较偏门的配置选项(php auto_prepend_file/auto_append_file),包括扩展中的一些复杂高级配置和原理;对PHP的工作机制比较了解,包括php-fpm工作机制,对zend引擎有基本熟悉(vm/gc/stream处理),阅读过基本的PHP内核代码,对PHP内部机制的大部分核心数据结构(基础类型/Array/Object)实现有了解,对于核心基础结构(zval/hashtable/gc)有深入学习了解;能够进行基本的PHP扩展开发,了解一些扩展开发的中高级知识(minit/rinit等),熟悉PHP跟apache/nginx不同的通信交互方式细节(mod_php/fastcgi)</li>
+<li>C/C++:除了第二阶段的基础C/C++语法和数据结构,进一步学习一些特殊数据结构(b-tree/rb-tree/skiplist/lsm-tree/trie-tree等);熟悉多进程/多线程编程;多进程情况下面了解大部分多进程之间的通信方式,能够灵活选择通信方式(共享内存/信号量/管道等);多线程编程能够良好的解决锁冲突问题,并且能够进行多线程程序的开发调试工作;同时对网络编程比较熟悉,了解多进程模型/多线程模型/异步网络IO模型的差别和选型,熟悉不同异步网络IO模型的原理和差异(select/poll/epoll/iocp等),并且熟悉常见的异步框架(ACE/ICE/libev/libevent/libuv/Boost.ASIO等)和使用,还可以看看一些国产自己开发的库(如muduo);同时能够设计好的高并发程序架构(leader-follow/master-worker等);了解大部分C/C++后端Server开发中的问题(内存管理/日志打印/高并发/前后端通信协议/服务监控),知道各个后端服务RPC通信问题(struct/http/thirft/protobuf等);能够很熟练的使用GCC和GDB来开发编译调试程序,能够迅速追查跟踪解决问题;通用模块开发方面,可以积累或者开发一些通用的工具或库(如异步网络框架/日志库/内存池/线程池等),不过开发后是否应用要谨慎,省的埋坑去追bug</li>
+<li>前端:深入了解HTTP协议(包括各个细致协议特殊协议代码和背后原因,比如302静态文件缓存了,502是Nginx后面PHP挂了之类的);除了之前的前端方面的各种框架应用整合能力,前端方面的学习如果有兴趣可以更深入,可以自己开发一些类似jQuery的前端框架,或者开发一个富文本编辑器之类的比较琐碎考验JS功力</li>
+<li>其他开发语言:建议在当前阶段可以尝试学习不同的编程语言,看个人兴趣爱好,脚本类语言可以学Python/Ruby之类的,函数式编程语言可以学Lisp/Haskell/Scala/Erlang之类的,静态的语言可以学Java/Golang,数据统计分析可以了解R语言,如果想换个视角做后端业务,可以试试Node.js还有前面提到的跟Nginx结合的Nginx_Lua等.学习不同的语言主要是提升自己的视野和解决问题手段的差异,比如会了解除了进程/线程,还有轻量级协程;比如在跨机器通信场景下,Erlang解决方案简单的惊人;比如在不想选择C/C++的情况下,还有类似高效的Erlang/Golang可用等等;主要是提升视野</li>
+<li>其他专业方向:看个人兴趣和长期的目标方向.目前情况能够选择的领域比较多,如云计算(分布式存储/分布式计算/虚拟机等),人工智能和机器学习(数据挖掘/模式识别等,应用到统计/个性化推荐),自然语言处理(中文分词等),搜索引擎技术/图形图像/语音识别等等.除了这些高大上的,还有很多偏工程方面的可以学习的地方,比如高性能系统/移动开发(Android/IOS)/计算机安全/嵌入式系统/硬件等方向.</li>
+<li>系统架构设计:能够应用掌握的经验技能,设计出比较复杂的中大型系统,能够解决大部分线上的各种复杂系统的问题,完成类似 浏览器 -&gt; CDN -&gt;负载均衡 -&gt; 接入层 -&gt; Nginx+PHP -&gt; 业务缓存 -&gt; 数据库 -&gt; 各路复杂后端RPC交互(存储后端/逻辑后端/反作弊后端/外部服务) -&gt; 更多后端这样的复杂系统;能够支撑每天数千万到数亿流量网站正常开放维护工作.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/进阶之路/" rel="tag"># 进阶之路</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/31/Git分支/" rel="next" title="Git分支">
+                <i class="fa fa-chevron-left"></i> Git分支
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.JPG"
+                alt="Fullegg" />
+            
+              <p class="site-author-name" itemprop="name">Fullegg</p>
+              <p class="site-description motion-element" itemprop="description">写博客总结知识</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fullegg233" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fullegg@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础阶段-PHP程序员-1-2年"><span class="nav-number">1.</span> <span class="nav-text">基础阶段(PHP程序员,1-2年)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重点"><span class="nav-number">1.1.</span> <span class="nav-text">重点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点"><span class="nav-number">1.3.</span> <span class="nav-text">知识点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提高阶段-高级PHP开发工程师-2-3年"><span class="nav-number">2.</span> <span class="nav-text">提高阶段(高级PHP开发工程师,2-3年)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重点-1"><span class="nav-number">2.1.</span> <span class="nav-text">重点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标-1"><span class="nav-number">2.2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点-1"><span class="nav-number">2.3.</span> <span class="nav-text">知识点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高级阶段-PHP系统架构师-长期"><span class="nav-number">3.</span> <span class="nav-text">高级阶段(PHP系统架构师,长期)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重点-2"><span class="nav-number">3.1.</span> <span class="nav-text">重点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标-2"><span class="nav-number">3.2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点-2"><span class="nav-number">3.3.</span> <span class="nav-text">知识点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fullegg</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
