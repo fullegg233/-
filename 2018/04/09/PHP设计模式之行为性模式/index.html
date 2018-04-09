@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,设计模式," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="观察者模式(Observe)介绍观察者是一种非常常用的模式,具体在 事件的设计上 体现最明显.在laravel的事件设计中,我们知道有一个listener和一个handler, 当listener侦听到一个事件发生时,可能有多个handler会与之对应自动处理各自的业务逻辑. 糟糕的事件写法123456789101112class Event&amp;#123;    function trigger">
+<meta name="keywords" content="PHP,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP设计模式之行为性模式">
+<meta property="og:url" content="http://yoursite.com/2018/04/09/PHP设计模式之行为性模式/index.html">
+<meta property="og:site_name" content="全蛋的博客">
+<meta property="og:description" content="观察者模式(Observe)介绍观察者是一种非常常用的模式,具体在 事件的设计上 体现最明显.在laravel的事件设计中,我们知道有一个listener和一个handler, 当listener侦听到一个事件发生时,可能有多个handler会与之对应自动处理各自的业务逻辑. 糟糕的事件写法123456789101112class Event&amp;#123;    function trigger">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-09T09:11:58.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP设计模式之行为性模式">
+<meta name="twitter:description" content="观察者模式(Observe)介绍观察者是一种非常常用的模式,具体在 事件的设计上 体现最明显.在laravel的事件设计中,我们知道有一个listener和一个handler, 当listener侦听到一个事件发生时,可能有多个handler会与之对应自动处理各自的业务逻辑. 糟糕的事件写法123456789101112class Event&amp;#123;    function trigger">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/09/PHP设计模式之行为性模式/"/>
+
+
+
+
+
+  <title>PHP设计模式之行为性模式 | 全蛋的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">全蛋的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/PHP设计模式之行为性模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fullegg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="全蛋的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP设计模式之行为性模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T11:57:34+08:00">
+                2018-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+
+<h1 id="观察者模式-Observe"><a href="#观察者模式-Observe" class="headerlink" title="观察者模式(Observe)"></a>观察者模式(Observe)</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>观察者是一种非常常用的模式,具体在 事件的设计上 体现最明显.在laravel的事件设计中,我们知道有一个listener和一个handler, 当listener侦听到一个事件发生时,可能有多个handler会与之对应自动处理各自的业务逻辑.</p>
+<h2 id="糟糕的事件写法"><a href="#糟糕的事件写法" class="headerlink" title="糟糕的事件写法"></a>糟糕的事件写法</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Event</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">trigger</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Event update!&lt;br/&gt;"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"..."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">$event = <span class="keyword">new</span> Event;</span><br><span class="line">$event-&gt;trigger();</span><br></pre></td></tr></table></figure>
+<p>事件和处理逻辑写到一起,太糟糕了,我还要事件干嘛,直接写逻辑就可以了.</p>
+<h2 id="合理的设计"><a href="#合理的设计" class="headerlink" title="合理的设计"></a>合理的设计</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明一个抽象的事件发生者基类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">EventGenerator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $observers = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addObserver</span><span class="params">(Observer $observer)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;observers[] = $observer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">notify</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="keyword">$this</span>-&gt;observers <span class="keyword">as</span> $observer)</span><br><span class="line">        &#123;</span><br><span class="line">            $observer-&gt;update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明一个观察者接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span><span class="params">($event_info = null)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明具体事件类,继承了主事件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Event</span> <span class="keyword">extends</span> <span class="title">EventGenerator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">trigger</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Event&lt;br/&gt;"</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;notify();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明多个观察者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer1</span> <span class="keyword">implements</span> <span class="title">observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span><span class="params">($event_info = null)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"逻辑1&lt;br/&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer2</span> <span class="keyword">implements</span> <span class="title">observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span><span class="params">($event_info = null)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"逻辑2&lt;br/&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">$event = <span class="keyword">new</span> Event;</span><br><span class="line">$event-&gt;addObserver(<span class="keyword">new</span> Observer1);</span><br><span class="line">$event-&gt;addObserver(<span class="keyword">new</span> Observer2);</span><br><span class="line">$event-&gt;trigger();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 仔细观察代码其实很简单的,Event基类里的foreach,可以实现一个事件对应多个观察者</span></span><br><span class="line"><span class="comment">// 在这里我们搞明白了,所谓观察者其实就是事件的handler,它和事件怎么挂钩呢,其实是需要注册一下</span></span><br><span class="line">$event-&gt;addObserver(<span class="keyword">new</span> Observer1);</span><br><span class="line">$event-&gt;addObserver(<span class="keyword">new</span> Observer2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// laravel 把 $event = new Event;$event-&gt;trigger(); 封装</span></span><br><span class="line">event(<span class="keyword">new</span> Event());</span><br></pre></td></tr></table></figure>
+<h2 id="感言"><a href="#感言" class="headerlink" title="感言"></a>感言</h2><p>随着设计模式学习的深入,我们对很多laravel架构设计的套路也慢慢清晰起来.</p>
+<hr>
+
+<h1 id="责任链模式-Chain-Of-Responsibilities"><a href="#责任链模式-Chain-Of-Responsibilities" class="headerlink" title="责任链模式(Chain Of Responsibilities)"></a>责任链模式(Chain Of Responsibilities)</h1><h2 id="理解概念"><a href="#理解概念" class="headerlink" title="理解概念"></a>理解概念</h2><p>责任链是一种比较高级的行为设计模式,就是当你有一个请求,你不知道用那个方法(handler)来处理这个请求时,你可以把这个请求丢进一个责任链里(里面有很多方法),这个责任链会通过轮询的方式自动找到对应的方法.<br>比如我要翻译一个单词,我写这个代码的时候,根本不知道用户会输入什么语言,所以我干脆就不管了,无论用户输入什么语言,我把它输入的内容丢进一个责任链,这个责任链里有德语翻译器,英语翻译器,法语翻译器,汉语翻译器,日语翻译器等等等等,丢进去的时候它就会自动查找了,找到对应的语言就会自动翻译出来.</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">TranslationResponsibility</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $next;</span><br><span class="line">    <span class="keyword">protected</span> $translator;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setNext</span><span class="params">(Responsibility $l)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;next = $l;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">canTranslate</span><span class="params">($input)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;$translator == check($input);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">check</span><span class="params">($input)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">translate</span><span class="params">($input)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EnglishTranslator</span> <span class="keyword">extends</span> <span class="title">TranslationResponsibility</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;translator = <span class="string">'English'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">translate</span><span class="params">($input)</span></span>&#123;</span><br><span class="line">    <span class="comment">//如果当前翻译器翻译不了,并且责任链上还有下一个翻译器可用,则让下一个翻译器试试</span></span><br><span class="line">        <span class="keyword">if</span> (!is_null(<span class="keyword">$this</span>-&gt;next) &amp;&amp; !<span class="keyword">$this</span>-&gt;canTranslate($input)) &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;next-&gt;translate();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//翻译成英语逻辑</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FrenchTranslator</span> <span class="keyword">extends</span> <span class="title">TranslationResponsibility</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;translator = <span class="string">'French'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">translate</span><span class="params">($input)</span></span>&#123;</span><br><span class="line">    <span class="comment">//如果当前翻译器翻译不了,并且责任链上还有下一个翻译器可用,则让下一个翻译器试试</span></span><br><span class="line">        <span class="keyword">if</span> (!is_null(<span class="keyword">$this</span>-&gt;next) &amp;&amp; !<span class="keyword">$this</span>-&gt;canTranslate($input)) &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;next-&gt;translate();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//翻译成法语逻辑</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//组建注册链</span></span><br><span class="line">$res_a = <span class="keyword">new</span> EnglishTranslator();</span><br><span class="line">$res_b = <span class="keyword">new</span> FrenchTranslator();</span><br><span class="line">$res_a-&gt;setNext($res_b);</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">$res_a-&gt;translate(<span class="string">'Bonjour'</span>);</span><br></pre></td></tr></table></figure>
+<p>结果就是,英语翻译器翻译不了,传递到法语翻译器翻译.<br>注意,这里为了简化说明,只展示了2个翻译器互为责任链的情况,如果你需要多个翻译器,还需要改造一下代码,让它能够轮询.</p>
+<hr>
+
+<h1 id="模板方法-Template-Method"><a href="#模板方法-Template-Method" class="headerlink" title="模板方法(Template Method)"></a>模板方法(Template Method)</h1><h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><p>这是最常见的设计模式之一,其实质就是父类提供一系列模板方法,有的实现了逻辑,有的只是一个接口.而子类继承大部分共有方法,同时对接口方法进行不同的实现,从而完成对父类模板的个性化改造,起到一对多的解耦目的.<br>可以说PHP的抽象类就是为了实现这个设计模式而推出的功能,在PHP中,抽象类本身就是模板方法模式.</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Journey.php 模板类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Journey</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $thingsToDo = [];</span><br><span class="line">    <span class="comment">//final关键字的作用是不让这个方法被子类覆盖</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">takeATrip</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;thingsToDo[] = <span class="keyword">$this</span>-&gt;buyAFlight();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;thingsToDo[] = <span class="keyword">$this</span>-&gt;takePlane();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;thingsToDo[] = <span class="keyword">$this</span>-&gt;enjoyVacation();</span><br><span class="line">        $buyGift = <span class="keyword">$this</span>-&gt;buyGift();</span><br><span class="line">        <span class="keyword">if</span> ($buyGift !== <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;thingsToDo[] = $buyGift;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;thingsToDo[] = <span class="keyword">$this</span>-&gt;takePlane();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//子类必须实现的抽象方法</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">enjoyVacation</span><span class="params">()</span>: <span class="title">string</span></span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">buyGift</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">buyAFlight</span><span class="params">()</span>: <span class="title">string</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Buy a flight ticket'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">takePlane</span><span class="params">()</span>: <span class="title">string</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Taking the plane'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//把所有旅行中干过的事情列出来</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getThingsToDo</span><span class="params">()</span>: <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;thingsToDo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BeachJourney.php子类一</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BeachJourney</span> <span class="keyword">extends</span> <span class="title">BeachJourney</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">enjoyVacation</span><span class="params">()</span>: <span class="title">string</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Swimming and sun-bathing"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BeachJourney.php子类二</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CityJourney</span> <span class="keyword">extends</span> <span class="title">Journey</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">enjoyVacation</span><span class="params">()</span>: <span class="title">string</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Eat, drink, take photos and sleep"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//覆盖父类已有方法</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">buyGift</span><span class="params">()</span>: <span class="title">string</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Buy a gift"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是一个关于旅行流程的模板,先做了一个一般性的旅行流程模板,然后做了2个个性化旅行的子类.<br>这个方案就是所谓的模板方法,非常常见.</p>
+<hr>
+
+<h1 id="策略模式-Strategy"><a href="#策略模式-Strategy" class="headerlink" title="策略模式(Strategy)"></a>策略模式(Strategy)</h1><h2 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h2><p>策略模式是一个非常常用,且非常有用的设计模式.<br>简单的说,它是当你使用大量if else逻辑时的救星.<br>if else 就是一种判断上下文的环境所作出的策略,如果你把if else写死,那么在复杂逻辑的时候你会发现代码超级长,而且最蛋疼的是,当你以后要新增策略时,再写一个elseif？<br>万一这个逻辑要修改20个地方呢？<br>一口老血吐在屏幕上…<br>策略模式就是来解决这个问题的.<br>举一个场景,商城的首页,男的进来看男性商品,女的进来看女性商品,不男不女…以此类推,各种条件下用不同策略展示不同商品.</p>
+<h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// showStrategy.php 展示策略接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">showStrategy</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showCategory</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// maleShowStrategy.php 男性用户展示策略</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">maleShowStrategy</span> <span class="keyword">implements</span> <span class="title">showStrategy</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showCategory</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'展示男性商品目录'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// femaleShowStrategy.php 女性用户展示策略</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">femaleShowStrategy</span> <span class="keyword">implements</span> <span class="title">showStrategy</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showCategory</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'展示女性商品目录'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// page.php 展示页面</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $_strategy;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(Strategy $strategy)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;_strategy = $strategy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showPage</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;_strategy-&gt;showCategory();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'male'</span>]))&#123;</span><br><span class="line">    $strategy = <span class="keyword">new</span> maleShowStrategy();</span><br><span class="line">&#125;<span class="keyword">elseif</span>(<span class="keyword">isset</span>($_GET[<span class="string">'female'</span>]))&#123;</span><br><span class="line">    $strategy = <span class="keyword">new</span> femaleShowStrategy();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//注意看这里上下,Page类不再依赖一种具体的策略,而是只需要绑定一个抽象的接口,这就是传说中的控制反转（IOC）.</span></span><br><span class="line">$question = <span class="keyword">new</span> Page($strategy);</span><br><span class="line">$question-&gt;showPage();</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>仔细看上面的例子,不复杂,我们发现有2个好处:</p>
+<ol>
+<li>它把if else 抽离出来了,不需要在每个类里都写if else;</li>
+<li>它成功的实现了控制反转,Page类里没有具体的依赖策略,这样我们就可以随时添加和删除 不同的策略.<br>评论.</li>
+</ol>
+<hr>
+
+<h1 id="访问者模式-Visitor"><a href="#访问者模式-Visitor" class="headerlink" title="访问者模式(Visitor)"></a>访问者模式(Visitor)</h1><h2 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h2><p>简单来说,就是本来你的类里有一个方法,后来因为种种原因,你需要增加新的方法,于是你不断修改这个类.<br>访问者模式,可以让你不用一直新增方法,不用改原来的类,而是通过新增一个类注入原有类来实现新增方法的目的.</p>
+<h2 id="原有类"><a href="#原有类" class="headerlink" title="原有类"></a>原有类</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Unit.php 基类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Unit</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//注意这个方法,非常关键,你现在可能没看懂,接着往下看,然后再回来看.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">accept</span><span class="params">(Visitor $visitor)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $method = <span class="string">'visit'</span>. get_class(<span class="keyword">$this</span>);</span><br><span class="line">        <span class="keyword">if</span> (method_exists($visitor, $method)) &#123;</span><br><span class="line">            $visitor-&gt;$method(<span class="keyword">$this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// User.php 具体类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Unint</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getName</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不修改User类,达到新增一个方法的目的</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">getPhoneVistor</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">visitUser</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">$user = <span class="keyword">new</span> User();</span><br><span class="line">$user-&gt;getName();</span><br><span class="line">$user-&gt;accept(<span class="keyword">new</span> getPhoneVistor());</span><br></pre></td></tr></table></figure>
+<hr>
+
+<h1 id="遍历模式-Iterator"><a href="#遍历模式-Iterator" class="headerlink" title="遍历模式(Iterator)"></a>遍历模式(Iterator)</h1><h2 id="介绍-4"><a href="#介绍-4" class="headerlink" title="介绍"></a>介绍</h2><p>如果你是laravel的用户,那么你应该经常使用这个所谓的遍历模式(有人翻译成迭代器模式,我觉得翻译不准确),但不一定完全理解.<br>当你在使用laravel的collection的时候,你有没有想过为什么可以用foreach来遍历一个对象?foreach不是用来遍历数组的吗?<br>foreach是可以用来遍历类的.</p>
+<h2 id="类属性遍历"><a href="#类属性遍历" class="headerlink" title="类属性遍历"></a>类属性遍历</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $var1 = <span class="string">'value 1'</span>;</span><br><span class="line">    <span class="keyword">public</span> $var2 = <span class="string">'value 2'</span>;</span><br><span class="line">    <span class="keyword">public</span> $var3 = <span class="string">'value 3'</span>;</span><br><span class="line">    <span class="keyword">protected</span> $protected = <span class="string">'protected var'</span>;</span><br><span class="line">    <span class="keyword">private</span>   $private   = <span class="string">'private var'</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">iterateAll</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="keyword">$this</span> <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"$key =&gt; $value\n"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$class = <span class="keyword">new</span> MyClass();</span><br><span class="line"><span class="keyword">foreach</span>($class <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"$key =&gt; $value\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"\n"</span>;</span><br><span class="line">$class-&gt;iterateAll();</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历可见属性</span></span><br><span class="line">var1 =&gt; value <span class="number">1</span></span><br><span class="line">var2 =&gt; value <span class="number">2</span></span><br><span class="line">var3 =&gt; value <span class="number">3</span></span><br><span class="line"><span class="comment">//遍历所有属性</span></span><br><span class="line">var1 =&gt; value <span class="number">1</span></span><br><span class="line">var2 =&gt; value <span class="number">2</span></span><br><span class="line">var3 =&gt; value <span class="number">3</span></span><br><span class="line"><span class="keyword">protected</span> =&gt; <span class="keyword">protected</span> <span class="keyword">var</span></span><br><span class="line"><span class="keyword">private</span> =&gt; <span class="keyword">private</span> <span class="keyword">var</span></span><br></pre></td></tr></table></figure>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>foreach还可以用来遍历集合.<br>所谓集合,就是一个类包含了多个类,并且这个集合可以像数组一样被遍历,可以进行各种集合运算操作.<br>典型例子,laravel的collection对象.<br>要实现遍历操作,在设计模式上我们需要采用遍历模式；foreach是一个封装好的方法,遍历模式就是把这个封装打开给你用.<br>在PHP中,我们需要实现Standard PHP Library (SPL)标准库中的一个遍历（Iterator）接口,它的形式如下:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Book.php 单元对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $author;</span><br><span class="line">    <span class="keyword">private</span> $title;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string $title, string $author)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;author = $author;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;title = $title;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getAuthor</span><span class="params">()</span>: <span class="title">string</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;author;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getTitle</span><span class="params">()</span>: <span class="title">string</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;title;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Collection.php 集合对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Collection</span> <span class="keyword">implements</span> \<span class="title">Countable</span>, \<span class="title">Iterator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $books = [];</span><br><span class="line">    <span class="keyword">private</span> $currentIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addBook</span><span class="params">(Book $book)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;books[] = $book;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">count</span><span class="params">()</span>: <span class="title">int</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> count(<span class="keyword">$this</span>-&gt;books);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">current</span><span class="params">()</span>: <span class="title">Book</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;books[<span class="keyword">$this</span>-&gt;currentIndex];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">key</span><span class="params">()</span>: <span class="title">int</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;currentIndex;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">next</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;currentIndex++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">rewind</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;currentIndex = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">valid</span><span class="params">()</span>: <span class="title">bool</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;books[<span class="keyword">$this</span>-&gt;currentIndex]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里我们实现了2个标准接口,<code>\Countable</code>, <code>\Iterator</code>.<br>如果你去遍历这个Collection对象,那么count(),current(),key(),next(),rewind(),valid()这些方法都会被调用,如果要深入研究,可以在这些方法里打印一下返回值.<br>这样处理后,可以对Collection对象进行遍历:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$bookList = <span class="keyword">new</span> Collection();</span><br><span class="line">$bookList-&gt;addBook(<span class="keyword">new</span> Book(<span class="string">'Learning PHP Design Patterns'</span>, <span class="string">'William Sanders'</span>));</span><br><span class="line">$bookList-&gt;addBook(<span class="keyword">new</span> Book(<span class="string">'Professional Php Design Patterns'</span>, <span class="string">'Aaron Saray'</span>));</span><br><span class="line">$bookList-&gt;addBook(<span class="keyword">new</span> Book(<span class="string">'Clean Code'</span>, <span class="string">'Robert C. Martin'</span>));</span><br><span class="line"><span class="keyword">foreach</span> ($bookList <span class="keyword">as</span> $book) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $book-&gt;getAuthor().<span class="string">'-'</span>.$book-&gt;getTitle().<span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+
+<h1 id="空对象模式-Null-Object"><a href="#空对象模式-Null-Object" class="headerlink" title="空对象模式(Null Object)"></a>空对象模式(Null Object)</h1><h2 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h2><p>这个模式不是经典的Gof(四人帮)搞的设计模式,但是鉴于它的高频率使用,有价值把它归纳成为一种行为性设计模式.<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeSound</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeSound</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Woof.."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">implements</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeSound</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Meowww.."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这个就是空对象,里面的方法啥也不做,它的存在就是为了避免报错</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NullAnimal</span> <span class="keyword">implements</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeSound</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// silence...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$animalType = <span class="string">'elephant'</span>;</span><br><span class="line"><span class="keyword">switch</span>($animalType) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'dog'</span>:</span><br><span class="line">        $animal = <span class="keyword">new</span> Dog();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'cat'</span>:</span><br><span class="line">        $animal = <span class="keyword">new</span> Cat();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        $animal = <span class="keyword">new</span> NullAnimal();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">$animal-&gt;makeSound(); <span class="comment">// ..the null animal makes no sound</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+
+<h1 id="状态模式-State"><a href="#状态模式-State" class="headerlink" title="状态模式(State)"></a>状态模式(State)</h1><h2 id="介绍-5"><a href="#介绍-5" class="headerlink" title="介绍"></a>介绍</h2><p>状态模式其实是策略模式的升级版,它们解决的都是逻辑中有大量if判断的问题;在介绍state模式之前,有必要来回顾一个策略模式的使用方法:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'male'</span>]))&#123;</span><br><span class="line">    $strategy = <span class="keyword">new</span> maleShowStrategy();</span><br><span class="line">&#125;<span class="keyword">elseif</span>(<span class="keyword">isset</span>($_GET[<span class="string">'female'</span>]))&#123;</span><br><span class="line">    $strategy = <span class="keyword">new</span> femaleShowStrategy();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 注意看这里上下,Page类不再依赖一种具体的策略,而是只需要绑定一个抽象的接口,这就是传说中的控制反转（IOC）.</span></span><br><span class="line">$question = <span class="keyword">new</span> Page($strategy);</span><br><span class="line">$question-&gt;showPage();</span><br></pre></td></tr></table></figure></p>
+<p>状态模式就是对前面的if elseif 这块逻辑进行升级,不再用if else判断,而是根据类自身的状态判断.</p>
+<h2 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h2><p>在写具体代码之前,我百度了一下网上的实现代码,我很惊讶似乎大多数案例都搞反了 状态类和业务类,不知道是我搞错了,还是网上的错误.大家暂且看我写的,有问题可以在文后评论.<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// shop.php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shop</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $handler;</span><br><span class="line">    <span class="comment">//这里$state设置一个状态值</span></span><br><span class="line">    <span class="keyword">public</span> $state;</span><br><span class="line">    <span class="comment">//设置默认状态,和默认处理器</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;state = <span class="string">'male'</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;handler = <span class="keyword">new</span> maleHandler();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setHandler</span><span class="params">(Handler $handler)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;handler = $handler;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;handler-&gt;handle(<span class="keyword">$this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// handler.php 业务处理接口类</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Handler</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">(Shop $shop)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// maleHandler.php 男性业务处理类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">maleHandler</span> <span class="keyword">implements</span> <span class="title">Handler</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">(Shop $shop)</span>  </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>($shop-&gt;state ==<span class="string">"male"</span>)&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'展示男性商品目录'</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $shop-&gt;setHandler(<span class="keyword">new</span> femaleHandler());</span><br><span class="line">            $shop-&gt;show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// female.Handler.php 女性业务处理类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">femaleHandler</span> <span class="keyword">implements</span> <span class="title">Handler</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">(Shop $shop)</span>  </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>($shop-&gt;state ==<span class="string">"female"</span>)&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'展示女性商品目录'</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $shop-&gt;setHandler(<span class="keyword">new</span> maleHandler());</span><br><span class="line">            $shop-&gt;show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">$shop = <span class="keyword">new</span> Shop;</span><br><span class="line">$shop-&gt;state =<span class="string">"male"</span>;</span><br><span class="line">$shop-&gt;show();  <span class="comment">//展示男性商品目录</span></span><br><span class="line">$shop-&gt;state =<span class="string">"female"</span>;</span><br><span class="line">$shop-&gt;show();  <span class="comment">//展示女性商品目录</span></span><br></pre></td></tr></table></figure></p>
+<p>我们看到这是一种更厉害的封装,在客户端这一块,if else不见了,甚至连策略类的注入也不见了.看上去很清爽.<br>但其实,在后台的实现,比之前复杂了不少,你需要在每一个handler类里面进行条件判断.</p>
+<hr>
+
+<h1 id="命令模式-Command"><a href="#命令模式-Command" class="headerlink" title="命令模式(Command)"></a>命令模式(Command)</h1><h2 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们来实现一个电视机开关的指令</span></span><br><span class="line"><span class="comment">// //命令接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Command</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">excecute</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//开电视指令</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">turnOnTVCommand</span> <span class="keyword">implements</span> <span class="title">Command</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $controller;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(Controller $controller)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;controller = $controller;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">excecute</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;controller-&gt;turnOnTV();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//关电视指令</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">turnOffTVCommand</span> <span class="keyword">implements</span> <span class="title">Command</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $controller;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(Controller $controller)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;controller = $controller;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">excecute</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;controller-&gt;turnOffTV();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//指令库控制器（储存所有具体执行逻辑）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">turnOnTV</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'打开电视'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">turnOffTV</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'关闭电视'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">$command_string = <span class="string">'turnOnTV'</span>.<span class="string">'Command'</span>;</span><br><span class="line">$command = <span class="keyword">new</span> $command_string(<span class="keyword">new</span> Controller());</span><br><span class="line">$command-&gt;excecute();</span><br></pre></td></tr></table></figure>
+<p>参考: <a href="http://larabase.com/collection/5/post/143" target="_blank" rel="noopener">PHP设计模式</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/08/PHP设计模式之结构性模式/" rel="next" title="PHP设计模式之结构性模式">
+                <i class="fa fa-chevron-left"></i> PHP设计模式之结构性模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.JPG"
+                alt="Fullegg" />
+            
+              <p class="site-author-name" itemprop="name">Fullegg</p>
+              <p class="site-description motion-element" itemprop="description">写博客总结知识</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fullegg233" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fullegg@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#观察者模式-Observe"><span class="nav-number">1.</span> <span class="nav-text">观察者模式(Observe)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#糟糕的事件写法"><span class="nav-number">1.2.</span> <span class="nav-text">糟糕的事件写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合理的设计"><span class="nav-number">1.3.</span> <span class="nav-text">合理的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感言"><span class="nav-number">1.4.</span> <span class="nav-text">感言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#责任链模式-Chain-Of-Responsibilities"><span class="nav-number">2.</span> <span class="nav-text">责任链模式(Chain Of Responsibilities)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解概念"><span class="nav-number">2.1.</span> <span class="nav-text">理解概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.2.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模板方法-Template-Method"><span class="nav-number">3.</span> <span class="nav-text">模板方法(Template Method)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-1"><span class="nav-number">3.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">3.2.</span> <span class="nav-text">抽象类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式-Strategy"><span class="nav-number">4.</span> <span class="nav-text">策略模式(Strategy)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-2"><span class="nav-number">4.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现-1"><span class="nav-number">4.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问者模式-Visitor"><span class="nav-number">5.</span> <span class="nav-text">访问者模式(Visitor)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-3"><span class="nav-number">5.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原有类"><span class="nav-number">5.2.</span> <span class="nav-text">原有类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遍历模式-Iterator"><span class="nav-number">6.</span> <span class="nav-text">遍历模式(Iterator)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-4"><span class="nav-number">6.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类属性遍历"><span class="nav-number">6.2.</span> <span class="nav-text">类属性遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合"><span class="nav-number">6.3.</span> <span class="nav-text">集合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#空对象模式-Null-Object"><span class="nav-number">7.</span> <span class="nav-text">空对象模式(Null Object)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现-2"><span class="nav-number">7.1.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态模式-State"><span class="nav-number">8.</span> <span class="nav-text">状态模式(State)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-5"><span class="nav-number">8.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现-3"><span class="nav-number">8.2.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令模式-Command"><span class="nav-number">9.</span> <span class="nav-text">命令模式(Command)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现-4"><span class="nav-number">9.1.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fullegg</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
