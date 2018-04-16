@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Git忽略规则在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如果没有这个文件，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：  此为注释 – 将被 Git 忽略 *.sample 　　 # 忽略所有 .sample 结尾的文件 !lib.sample 　　 # 但 lib.sample 除外 /TODO">
+<meta name="description" content="Git忽略规则在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如果没有这个文件，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：  # 此为注释 – 将被 Git 忽略 *.sample 　　 # 忽略所有 .sample 结尾的文件 !lib.sample 　　 # 但 lib.sample 除外 /TODO">
 <meta name="keywords" content="Git,.gitignore">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git忽略规则和.gitignore规则不生效的解决办法">
 <meta property="og:url" content="http://yoursite.com/2018/04/16/Git忽略规则和.gitignore规则不生效的解决办法/index.html">
 <meta property="og:site_name" content="全蛋的博客">
-<meta property="og:description" content="Git忽略规则在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如果没有这个文件，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：  此为注释 – 将被 Git 忽略 *.sample 　　 # 忽略所有 .sample 结尾的文件 !lib.sample 　　 # 但 lib.sample 除外 /TODO">
+<meta property="og:description" content="Git忽略规则在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如果没有这个文件，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：  # 此为注释 – 将被 Git 忽略 *.sample 　　 # 忽略所有 .sample 结尾的文件 !lib.sample 　　 # 但 lib.sample 除外 /TODO">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-16T06:06:09.653Z">
+<meta property="og:updated_time" content="2018-04-16T06:08:11.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git忽略规则和.gitignore规则不生效的解决办法">
-<meta name="twitter:description" content="Git忽略规则在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如果没有这个文件，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：  此为注释 – 将被 Git 忽略 *.sample 　　 # 忽略所有 .sample 结尾的文件 !lib.sample 　　 # 但 lib.sample 除外 /TODO">
+<meta name="twitter:description" content="Git忽略规则在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如果没有这个文件，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：  # 此为注释 – 将被 Git 忽略 *.sample 　　 # 忽略所有 .sample 结尾的文件 !lib.sample 　　 # 但 lib.sample 除外 /TODO">
 
 
 
@@ -322,7 +322,7 @@
       
         <h2 id="Git忽略规则"><a href="#Git忽略规则" class="headerlink" title="Git忽略规则"></a>Git忽略规则</h2><p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如果没有这个文件，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：</p>
 <ul>
-<li><h1 id="此为注释-–-将被-Git-忽略"><a href="#此为注释-–-将被-Git-忽略" class="headerlink" title="此为注释 – 将被 Git 忽略"></a>此为注释 – 将被 Git 忽略</h1></li>
+<li># 此为注释 – 将被 Git 忽略</li>
 <li>*.sample 　　 # 忽略所有 .sample 结尾的文件</li>
 <li>!lib.sample 　　 # 但 lib.sample 除外</li>
 <li>/TODO 　　 # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</li>
@@ -518,7 +518,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git忽略规则"><span class="nav-number">1.</span> <span class="nav-text">Git忽略规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#此为注释-–-将被-Git-忽略"><span class="nav-number"></span> <span class="nav-text">此为注释 – 将被 Git 忽略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gitignore规则不生效的解决办法"><span class="nav-number">1.</span> <span class="nav-text">.gitignore规则不生效的解决办法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git忽略规则"><span class="nav-number">1.</span> <span class="nav-text">Git忽略规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gitignore规则不生效的解决办法"><span class="nav-number">2.</span> <span class="nav-text">.gitignore规则不生效的解决办法</span></a></li></ol></div>
             
 
           </div>
